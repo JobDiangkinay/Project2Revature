@@ -1,3 +1,4 @@
+package models;
 
 public class Person {
 	private int id;
@@ -68,6 +69,4 @@ public class Person {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
-	
 }

@@ -1,34 +1,36 @@
+package models;
+
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.SecureRandom;
 
 public class User {
-	private int Id;
-	private  String Username;
-	private  byte[] saltPassword;
-	private  byte[] hashPassword;
-	private String UserType;
-
+	private int id;
+	private String username;
+	private byte[] saltPassword;
+	private byte[] hashPassword;
+	private String userType;
+	public User() {
+		super();
+	}
 	public User(int id, String username, String password, String userType) {
 		super();
-		Id = id;
-		Username = username;
+		this.id = id;
+		this.username = username;
+		this.userType = userType;
 		stringToHash(password);
-		UserType = userType;
 	}
-	public User() {
-		}
 	public int getId() {
-		return Id;
+		return id;
 	}
 	public void setId(int id) {
-		Id = id;
+		this.id = id;
 	}
 	public String getUsername() {
-		return Username;
+		return username;
 	}
 	public void setUsername(String username) {
-		Username = username;
+		this.username = username;
 	}
 	public byte[] getSaltPassword() {
 		return saltPassword;
@@ -43,10 +45,10 @@ public class User {
 		this.hashPassword = hashPassword;
 	}
 	public String getUserType() {
-		return UserType;
+		return userType;
 	}
 	public void setUserType(String userType) {
-		UserType = userType;
+		this.userType = userType;
 	}
 	
 	public void stringToHash(String password) {
@@ -67,4 +69,5 @@ public class User {
 			ex.printStackTrace();
 		}
 	}
+	
 }

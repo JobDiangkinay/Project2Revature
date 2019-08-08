@@ -1,5 +1,6 @@
 Manifest-Version: 1.0
-Built-By: kbui3
-Build-Jdk: 10
+Build-Jdk-Spec: 10
+Implementation-Title: project-2-mysterice
+Implementation-Version: 0.0.1-SNAPSHOT
 Created-By: Maven Integration for Eclipse
 
