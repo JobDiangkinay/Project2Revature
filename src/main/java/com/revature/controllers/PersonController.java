@@ -14,7 +14,7 @@ import com.revature.models.Person;
 import com.revature.models.User;
 
 @RestController
-@RequestMapping(path = "users")
+@RequestMapping(path = "persons")
 public class PersonController {
 	@Autowired
 	PersonRepository personRepository;

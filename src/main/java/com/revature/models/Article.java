@@ -31,7 +31,7 @@ public class Article {
 	private String status;
 	
 	@ManyToOne
-	@JoinColumn(name = "person")
+	@JoinColumn(name = "author_id")
 	private Person person;
 	
 	public Article() {
