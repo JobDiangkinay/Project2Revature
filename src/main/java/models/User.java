@@ -13,13 +13,12 @@ public class User {
 	public User() {
 		super();
 	}
-	public User(int id, String username, byte[] saltPassword, byte[] hashPassword, String userType) {
+	public User(int id, String username, String password, String userType) {
 		super();
 		this.id = id;
 		this.username = username;
-		this.saltPassword = saltPassword;
-		this.hashPassword = hashPassword;
 		this.userType = userType;
+		stringToHash(password);
 	}
 	public int getId() {
 		return id;
