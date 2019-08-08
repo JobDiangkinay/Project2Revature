@@ -4,7 +4,10 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,6 +26,12 @@ public class PersonRepository {
 	
 	public List<Person> getAllPersons(){
 		return getSession().createQuery("from Person",Person.class).list();
+	}
+	
+	public Person getSpecificPerson(int id) {
+		Query<Person> query = getSession().createQuery(
+		        "SELECT c FROM Person c WHERE c.id = :id", Person.class);
+		    return query.setParameter("id", id).getSingleResult();
 	}
 	
 	public Person postPerson(Person person) {
