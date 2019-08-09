@@ -73,6 +73,10 @@ public class User {
 	public void setSaltPassword(byte[] saltPassword) {
 		this.saltPassword = saltPassword;
 	}
+	
+	public byte[] getSaltPassword() {
+		return saltPassword;
+	}
 
 	public byte[] getHashPassword() {
 		return hashPassword;

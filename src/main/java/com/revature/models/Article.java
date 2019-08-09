@@ -21,8 +21,6 @@ public class Article {
 	private String title;
 	@Column(name = "content")
 	private String content;
-	@Column(name = "author")
-	private String author;
 	@Column(name = "date")
 	private String date;
 	@Column(name = "category")
@@ -37,13 +35,12 @@ public class Article {
 	public Article() {
 		super();
 	}
-	public Article(int id, String title, String content, String author, String date, String category, String status,
+	public Article(int id, String title, String content, String date, String category, String status,
 			Person person) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.content = content;
-		this.author = author;
 		this.date = date;
 		this.category = category;
 		this.status = status;
@@ -66,12 +63,6 @@ public class Article {
 	}
 	public void setContext(String content) {
 		this.content = content;
-	}
-	public String getAuthor() {
-		return author;
-	}
-	public void setAuthor(String author) {
-		this.author = author;
 	}
 	public String getDate() {
 		return date;

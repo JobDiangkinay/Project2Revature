@@ -24,7 +24,6 @@ create table articles(
     id serial primary key,
     title text not null,
     content text not null,
-    author text not null,
     date text not null,
     category text not null,
     status text not null,
