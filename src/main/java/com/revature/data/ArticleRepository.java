@@ -28,7 +28,7 @@ public class ArticleRepository {
 	
 	public Article postArticle(Article article) {
 		Article newArticle = article;
-		getSession().persist("Article",newArticle);
+		getSession().save("Article",newArticle);
 		return newArticle;
 	}
 }

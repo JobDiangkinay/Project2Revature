@@ -27,9 +27,8 @@ public class UserRepository {
     }
 	
 	public User postUser(User user) {
-		User newUser = user;
-        getSession().persist("User", newUser);
-        return newUser;
+        getSession().save("User", user);
+        return user;
     }
 
 }

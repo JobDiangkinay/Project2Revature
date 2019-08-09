@@ -34,9 +34,13 @@ public class PersonRepository {
 		    return query.setParameter("id", id).getSingleResult();
 	}
 	
+	public Person updatePerson(Person person) {
+		getSession().update("Person", person);
+		return person;
+	}
+	
 	public Person postPerson(Person person) {
-		Person newPerson = person;
-		getSession().persist("Person", newPerson);
-		return newPerson;
+		getSession().save("Person", person);
+		return person;
 	}
 }
