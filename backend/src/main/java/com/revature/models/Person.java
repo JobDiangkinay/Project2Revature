@@ -1,25 +1,40 @@
-package models;
+package com.revature.models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "persons")
 public class Person {
+	
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private int id;
+	@Column(name = "firstname")
 	private String firstName;
+	@Column(name = "lastname")
 	private String lastName;
+	@Column(name = "phonenumber")
 	private String phoneNumber;
+	@Column(name = "email")
 	private String email;
-	private User user;
 	
 	public Person() {
 		super();
 	}
 
-	public Person(int id, String firstName, String lastName, String phoneNumber, String email, User user) {
+	public Person(int id, String firstName, String lastName, String phoneNumber, String email) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.phoneNumber = phoneNumber;
 		this.email = email;
-		this.user = user;
 	}
 
 	public int getId() {
@@ -60,13 +75,5 @@ public class Person {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
 	}
 }
