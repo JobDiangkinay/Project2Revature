@@ -1,0 +1,54 @@
+<div>
+    <div *ngIf="personSpec">
+        <h3>User Information</h3>
+        <table>
+            <tr>
+                <td>Name: </td>
+                <td>{{personSpec.firstName}} {{personSpec.lastName}}</td>
+            </tr>
+            <tr>
+                <td>Phone Number: </td>
+                <td>{{personSpec.phoneNumber}}</td>
+            </tr>
+            <tr>
+                <td>Email Address: </td>
+                <td>{{personSpec.email}}</td>
+            </tr>
+            <tr>
+                <button (click)="showUpdateComponent()">Update Info</button>
+            </tr>
+        </table>
+        
+    </div>
+    <div *ngIf="showUpdate">
+        <h3>Update Information</h3>
+        <form #updatePerson="ngForm" (ngSubmit)="updateInfo(updatePerson.value)">
+            <table>
+                <tr>
+                    <td>Email Address: </td>
+                    <td><input type="text" name="newEmail" maxlength="30" ngModel></td>
+                </tr>
+                <tr>
+                    <td>Phone Number: </td>
+                    <td><input type="text" name="newPhone" maxlength="10" ngModel></td>
+                </tr>
+                <tr><input type="submit" value="Save Information"></tr>
+            </table>
+        </form>
+    </div>
+    <div>
+        <h3>List of Persons</h3>
+        <table>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Phone Number</th>
+            </tr>
+            <tr *ngFor="let person of persons | async">
+                <td>{{person.firstName}}</td>
+                <td>{{person.lastName}}</td>
+                <td>{{person.phoneNumber}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
