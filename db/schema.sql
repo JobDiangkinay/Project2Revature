@@ -12,10 +12,11 @@ create table persons(
 create table users(
     id serial primary key,
     username text not null,
-    hashpassword bytea not null,
-    saltpassword bytea not null,
     usertype text not null,
-    person integer REFERENCES persons(id) on delete cascade
+    person integer REFERENCES persons(id) on delete cascade,
+    saltpassword bytea not null,
+    hashpassword bytea not null
+   
 );
 
 

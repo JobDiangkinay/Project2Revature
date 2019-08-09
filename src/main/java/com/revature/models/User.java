@@ -4,6 +4,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.SecureRandom;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,12 +14,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name = "users")
 public class User {
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
 	@Column(name = "username")
@@ -29,16 +29,23 @@ public class User {
 	private byte[] hashPassword;
 	@Column(name = "usertype")
 	private String userType;
-	
-	 @OneToOne
-	 @JoinColumn(name = "person")
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "person")
 	private Person person;
+
+	public Person getPerson() {
+		return person;
+	}
+
+	public void setPerson(Person person) {
+		this.person = person;
+	}
 
 	public User() {
 		super();
 	}
 
-	public User(int id, String username, String password, String userType, Person person) {
+	public User(int id, String username, String userType, Person person, String password) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -61,10 +68,6 @@ public class User {
 
 	public void setUsername(String username) {
 		this.username = username;
-	}
-
-	public byte[] getSaltPassword() {
-		return saltPassword;
 	}
 
 	public void setSaltPassword(byte[] saltPassword) {
@@ -91,7 +94,7 @@ public class User {
 		SecureRandom random = new SecureRandom();
 		byte[] salt = new byte[16];
 		random.nextBytes(salt);
-		this.saltPassword = salt;
+		this.setSaltPassword(salt);
 
 		MessageDigest md;
 		try {
@@ -100,7 +103,7 @@ public class User {
 
 			// This is stored in database in user
 			byte[] hashedPassword = md.digest(password.getBytes(StandardCharsets.UTF_8));
-			this.hashPassword = hashedPassword;
+			this.setHashPassword(hashedPassword);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
