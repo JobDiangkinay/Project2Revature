@@ -1,0 +1,29 @@
+<form [formGroup]="profileForm" (ngSubmit)="onClickSubmit()">  
+  <label>
+    Username:
+    <input type="text" formControlName="UserName" #username>
+  </label>
+ <label>
+    Password:
+    <input type="password" formControlName="Password" #password>
+  </label>
+  <label>
+    firstname:
+    <input type="text" formControlName="Firstname" #firstname>
+  </label>
+    <label>
+    Lastname:
+    <input type="text" formControlName="Lastname" #lastname>
+  </label>
+    <label>
+    Phonenumber:
+    <input type="text" formControlName="Phonenumber" #phonenumber>
+  </label>
+  <label>
+    Email:
+    <input type="text" formControlName="Email" #email>
+  </label>
+  <input type = "submit" 
+          value = "Login" 
+          (click) = "onClickSubmit(username.value,  password.value,firstname.value, lastname.value,phonenumber.value, email.value)" >
+</form>
