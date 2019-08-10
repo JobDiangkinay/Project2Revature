@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "users")
@@ -32,6 +33,17 @@ public class User {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "person")
 	private Person person;
+	@Transient
+	private String password;
+
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 	public Person getPerson() {
 		return person;
@@ -94,6 +106,13 @@ public class User {
 		this.userType = userType;
 	}
 
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", userType=" + userType + ", person=" + person
+				+ ", password=" + password + "]";
+	}
+	
 	public void stringToHash(String password) {
 		SecureRandom random = new SecureRandom();
 		byte[] salt = new byte[16];

@@ -1,5 +1,8 @@
 package com.revature.controllers;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.SecureRandom;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +37,24 @@ public class UserController {
 	 
 	 @PostMapping("/")
 	    public User postUser(@RequestBody User user) {
-	        return getUserRepository().postUser(user);
+		 User newUser = user;
+		 SecureRandom random = new SecureRandom();
+			byte[] salt = new byte[16];
+			random.nextBytes(salt);
+			newUser.setSaltPassword(salt);
+
+			MessageDigest md;
+			try {
+				md = MessageDigest.getInstance("SHA-512");
+				md.update(salt);
+
+				// This is stored in database in user
+				byte[] hashedPassword = md.digest(newUser.getPassword().getBytes(StandardCharsets.UTF_8));
+				newUser.setHashPassword(hashedPassword);
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+			System.out.println(newUser.toString());
+	        return getUserRepository().postUser(newUser);
 	    }
 }
