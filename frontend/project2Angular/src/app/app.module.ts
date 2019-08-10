@@ -9,13 +9,15 @@ import { UserinfoComponent } from './userinfo/userinfo.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule } from  '@angular/material';
+import { UserarticleComponent } from './userarticle/userarticle.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     UserinfoComponent,
-    NavbarComponent
+    NavbarComponent,
+    UserarticleComponent
   ],
   imports: [
     BrowserModule,

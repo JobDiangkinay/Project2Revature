@@ -1,0 +1,31 @@
+<p>userarticle works!</p>
+<button (click)="showCreateComponent()">Create New Article</button>
+
+<div>
+    <div *ngIf="showCreate">
+        <h3>Create New Article</h3>
+        <form #newArticle="ngForm" (ngSubmit)="createArticle(newArticle.value)">
+            <table>
+                <tr>
+                    <td>Category</td>
+                    <td>
+                        <select name="category" ngModel>
+                            <option value="Science" selected>Science</option>
+                            <option value="Technology">Technology</option>
+                            <option value="Mathematics">Mathematics</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Title</td>
+                    <td><input type="text" name="newTitle" maxlength="30" ngModel></td>
+                </tr>
+                <tr>
+                    <td>Content</td>
+                    <td><input type="text" name="newContent" ngModel></td>
+                </tr>
+                <tr><input type="submit" value="Submit Article"></tr>
+            </table>
+        </form>
+    </div>
+</div>

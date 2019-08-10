@@ -32,8 +32,9 @@ public class ArticleController {
         return getArticleRepository().getAllArticles();
     }
  
- @PostMapping("/")
+	@PostMapping("/")
     public Article postArticle(@RequestBody Article article) {
         return getArticleRepository().postArticle(article);
     }
+
 }
