@@ -10,6 +10,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule } from  '@angular/material';
 import { ProfileEditorComponent } from './profile-editor/profile-editor.component';
+import { UserarticleComponent } from './userarticle/userarticle.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { ProfileEditorComponent } from './profile-editor/profile-editor.componen
     AppComponent,
     UserinfoComponent,
     NavbarComponent,
-    ProfileEditorComponent
+    ProfileEditorComponent,
+    UserarticleComponent
   ],
   imports: [
     BrowserModule,

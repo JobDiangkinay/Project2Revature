@@ -20,13 +20,13 @@ public class Article {
 	@Column(name = "title")
 	private String title;
 	@Column(name = "content")
-	private String content;
+	private String articleContent;
 	@Column(name = "date")
 	private String date;
 	@Column(name = "category")
 	private String category;
 	@Column(name = "status")
-	private String status;
+	private String articleStatus;
 	
 	@ManyToOne
 	@JoinColumn(name = "author_id")
@@ -35,57 +35,73 @@ public class Article {
 	public Article() {
 		super();
 	}
-	public Article(int id, String title, String content, String date, String category, String status,
+
+	public Article(int id, String title, String articleContent, String date, String category, String articleStatus,
 			Person person) {
 		super();
 		this.id = id;
 		this.title = title;
-		this.content = content;
+		this.articleContent = articleContent;
 		this.date = date;
 		this.category = category;
-		this.status = status;
+		this.articleStatus = articleStatus;
 		this.person = person;
 	}
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public String getTitle() {
 		return title;
 	}
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getContext() {
-		return content;
+
+	public String getArticleContent() {
+		return articleContent;
 	}
-	public void setContext(String content) {
-		this.content = content;
+
+	public void setArticleContent(String articleContent) {
+		this.articleContent = articleContent;
 	}
+
 	public String getDate() {
 		return date;
 	}
+
 	public void setDate(String date) {
 		this.date = date;
 	}
+
 	public String getCategory() {
 		return category;
 	}
+
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	public String getStatus() {
-		return status;
+
+	public String getArticleStatus() {
+		return articleStatus;
 	}
-	public void setStatus(String status) {
-		this.status = status;
+
+	public void setArticleStatus(String articleStatus) {
+		this.articleStatus = articleStatus;
 	}
+
 	public Person getPerson() {
 		return person;
 	}
+
 	public void setPerson(Person person) {
 		this.person = person;
 	}
+	
 }
