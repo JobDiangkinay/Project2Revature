@@ -31,6 +31,7 @@ export class UserinfoComponent implements OnInit {
     let newPer = new Person(this.personSpec.id,this.personSpec.firstName,this.personSpec.lastName,formData.newPhone,formData.newEmail);
     this.userInfoService.updatePersonInfo(newPer).subscribe(hero => this.personSpec = hero);
     this.ngOnInit();
+    this.showUpdate = false;
   }
 
   showUpdateComponent(){
