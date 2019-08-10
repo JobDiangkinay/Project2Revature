@@ -24,7 +24,7 @@
                     <td>Content</td>
                     <td><input type="text" name="newContent" ngModel></td>
                 </tr>
-                <tr><input type="submit" value="Submit Article"></tr>
+                <tr><input type="submit" value="Submit Article" [disabled]="!newArticle.valid"></tr>
             </table>
         </form>
     </div>
