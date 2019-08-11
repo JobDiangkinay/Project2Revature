@@ -31,6 +31,7 @@ export class UserarticleComponent implements OnInit {
     let newArticle = new Article(0,formData.newTitle,formData.newContent,this.getDate(),formData.category,"Pending",this.personSpec);
     this.userArticleService.createArticle(newArticle).subscribe();
     this.showCreate = false;
+    this.showUserArticles();
   }
 
   showUserArticles(){
