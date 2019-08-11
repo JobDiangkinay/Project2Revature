@@ -12,7 +12,8 @@ import { Person } from '../userinfo/person';
 })
 export class UserarticleComponent implements OnInit {
 
-  articles: Observable<Article[]>;
+  articles: Article[];
+  showArticles: boolean = false;
   showCreate: boolean = false;
   newArticle: Article;
   personSpec: Person;
@@ -23,12 +24,19 @@ export class UserarticleComponent implements OnInit {
 
   ngOnInit() {
     this.userInfoService.getPersonById(1).subscribe(hero => this.personSpec = hero);
+//    this.userArticleService.getUserArticles(this.personSpec.id).subscribe(articleList => this.articles = articleList);
   }
 
   createArticle(formData){
     let newArticle = new Article(0,formData.newTitle,formData.newContent,this.getDate(),formData.category,"Pending",this.personSpec);
     this.userArticleService.createArticle(newArticle).subscribe();
     this.showCreate = false;
+    this.showUserArticles();
+  }
+
+  showUserArticles(){
+    this.showArticles = !this.showArticles;
+    this.userArticleService.getUserArticles(this.personSpec.id).subscribe(articleList => this.articles = articleList);
   }
 
   showCreateComponent(){

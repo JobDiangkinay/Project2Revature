@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.models.Article;
+import com.revature.models.Person;
 
 @Repository
 @Transactional
@@ -27,10 +28,27 @@ public class ArticleRepository {
 		return getSession().createQuery("from Article",Article.class).list();
 	}
 	
+	public List<Article> getUserArticles(Integer id){
+//		Query<List<Article>> query = getSession().createQuery("FROM Article a WHERE a.person.id = :id", Article.class).list();
+//		return query.setParameter("id",person.getId());
+	System.out.println(id);
+		String hql = "from Article a WHERE a.person.id = :id";
+		Query<Article> query = getSession().createQuery(hql,Article.class);
+		query.setParameter("id", id);
+		return query.list();
+	}
+	
 	public Article postArticle(Article article) {
 		Article newArticle = article;
 		getSession().save("Article",newArticle);
 		return newArticle;
+	}
+	
+	public List<Article> getAllPendingArticles() {
+		String pending = "pending";
+		Query<Article> query = getSession().createQuery(
+		        "SELECT c FROM Article c WHERE c.articleStatus = :pending", Article.class);
+		    return query.setParameter("pending", pending).list();
 	}
 	
 }

@@ -12,6 +12,7 @@ import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatBu
 import { ProfileEditorComponent } from './profile-editor/profile-editor.component';
 import { UserarticleComponent } from './userarticle/userarticle.component';
 import { LoginComponentComponent } from './login-component/login-component.component';
+import { EditorHandleArticleComponent } from './editor-handle-article/editor-handle-article.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { LoginComponentComponent } from './login-component/login-component.compo
     NavbarComponent,
     ProfileEditorComponent,
     UserarticleComponent,
-    LoginComponentComponent
+    LoginComponentComponent,
+    EditorHandleArticleComponent
   ],
   imports: [
     BrowserModule,

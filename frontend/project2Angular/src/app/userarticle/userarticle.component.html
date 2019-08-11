@@ -1,3 +1,27 @@
+<h3>List of User's Articles</h3>
+
+<button (click)="showUserArticles()">Show Articles</button>
+<div>
+    <div *ngIf="showArticles">
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Content</th>
+                <th>Date Created</th>
+                <th>Category</th>
+                <th>Article's Status</th>
+            </tr>
+            <tr *ngFor="let article of articles">
+                <td>{{article.title}}</td>
+                <td>{{article.content}}</td>
+                <td>{{article.date}}</td>
+                <td>{{article.category}}</td>
+                <td>{{article.articleStatus}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
 <button (click)="showCreateComponent()">Create New Article</button>
 
 <div>

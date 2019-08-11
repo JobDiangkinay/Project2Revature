@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,10 +32,20 @@ public class ArticleController {
     public List<Article> getAllArticles() {
         return getArticleRepository().getAllArticles();
     }
+	
+	@GetMapping("/userarticle/{id}")
+	public List<Article> getUserArticles(@PathVariable Integer id){
+		return getArticleRepository().getUserArticles(id);
+	}
  
 	@PostMapping("/")
     public Article postArticle(@RequestBody Article article) {
         return getArticleRepository().postArticle(article);
     }
+	
+	@GetMapping("/pending")
+	public List<Article> getPendingArticles(){
+		return getArticleRepository().getAllPendingArticles();
+	}
 
 }
