@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule } from  '@angular/material';
 import { ProfileEditorComponent } from './profile-editor/profile-editor.component';
 import { UserarticleComponent } from './userarticle/userarticle.component';
+import { LoginComponentComponent } from './login-component/login-component.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { UserarticleComponent } from './userarticle/userarticle.component';
     UserinfoComponent,
     NavbarComponent,
     ProfileEditorComponent,
-    UserarticleComponent
+    UserarticleComponent,
+    LoginComponentComponent
   ],
   imports: [
     BrowserModule,

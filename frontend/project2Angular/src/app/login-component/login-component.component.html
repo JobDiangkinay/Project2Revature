@@ -1,0 +1,22 @@
+<form [formGroup]="profileForm">
+    <table>
+        Login
+        <tr>
+    <label>
+        <td>Username:</td>
+        <td><input type="text" formControlName="UserName" #username></td>
+    </label>
+    </tr>
+    <tr>
+    <label>
+        <td>Password:</td>
+        <td><input type="password" formControlName="Password" #password></td>
+    </label>
+    </tr>
+    <tr>
+    <label>
+        <input type="submit" value="Login" (click)="onClickSubmit(username.value,  password.value)">
+    </label>
+    </tr>
+    </table>
+</form>

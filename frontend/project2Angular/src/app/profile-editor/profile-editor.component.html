@@ -1,29 +1,46 @@
-<form [formGroup]="profileForm">  
-    <label>
-      Username:
-      <input type="text" formControlName="UserName" #username>
+<form [formGroup]="profileForm">    
+    <table>
+        Signup
+        <tr>
+  <label>
+      <td>Username:</td>
+      <td><input type="text" formControlName="UserName" #username></td>
     </label>
+  </tr>
+  <tr>
    <label>
-      Password:
-      <input type="password" formControlName="Password" #password>
+      <td>Password:</td>
+      <td><input type="password" formControlName="Password" #password></td>
     </label>
+  </tr>
+  <tr>
     <label>
-      firstname:
-      <input type="text" formControlName="FirstName" #firstname>
+        <td>firstname:</td>
+            <td><input type="text" formControlName="FirstName" #firstname></td>
     </label>
+  </tr>
+  <tr>
       <label>
-      Lastname:
-      <input type="text" formControlName="LastName" #lastname>
+          <td>Lastname:</td>
+              <td><input type="text" formControlName="LastName" #lastname></td>
     </label>
+  </tr>
+  <tr>
       <label>
-      Phonenumber:
-      <input type="text" formControlName="PhoneNumber" #phonenumber>
+          <td>Phonenumber:</td>
+              <td><input type="text" formControlName="PhoneNumber" #phonenumber></td>
     </label>
+  </tr>
+  <tr>
     <label>
-      Email:
-      <input type="text" formControlName="Email" #email>
+        <td>Email:</td>
+            <td><input type="text" formControlName="Email" #email></td>
     </label>
+  </tr>
+  <tr>
     <input type = "submit" 
-            value = "Login" 
+            value = "Sign Up" 
             (click) = "onClickSubmit(username.value,  password.value,firstname.value, lastname.value,phonenumber.value, email.value)" >
+  </tr>
+    </table>
   </form>
