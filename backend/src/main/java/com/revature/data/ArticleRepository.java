@@ -44,4 +44,11 @@ public class ArticleRepository {
 		return newArticle;
 	}
 	
+	public List<Article> getAllPendingArticles() {
+		String pending = "pending";
+		Query<Article> query = getSession().createQuery(
+		        "SELECT c FROM Article c WHERE c.articleStatus = :pending", Article.class);
+		    return query.setParameter("pending", pending).list();
+	}
+	
 }

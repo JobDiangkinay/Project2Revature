@@ -1,0 +1,17 @@
+<div>
+    <h3>List of Pending Articles</h3>
+        <table>
+            <tr>
+                <th>Article Id</th>
+                <th>Title</th>
+                <th>Submitted By</th>
+                <th>Date Submitted</th>
+            </tr>
+            <tr *ngFor="let pendingArticle of pendingArticles | async" (click)="handleSpecArticle(pendingArticle)">
+                <td>{{pendingArticle.id}}</td>
+                <td>{{pendingArticle.title}}</td>
+                <td>{{pendingArticle.person.firstName}} {{pendingArticle.person.lastName}}</td>
+                <td>{{pendingArticle.date}}</td>
+            </tr>
+        </table>
+</div>
