@@ -19,11 +19,6 @@ export class LoginComponentComponent {
 	onClickSubmit(UserName, Password) {
 			username: UserName;
 			password: Password;
-	/*
-    this.ProfileEditorService.InsertUser(User).subscribe();
-		var ob = JSON.stringify(User);
-	*/	alert(
-			"username: " + UserName + "password: " + Password
-    );
 	
+    this.LoginComponentService.LoginUser(UserName,Password).subscribe();
 }}

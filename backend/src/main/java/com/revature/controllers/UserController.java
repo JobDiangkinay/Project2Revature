@@ -2,17 +2,17 @@ package com.revature.controllers;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
+import java.util.Arrays;
 import java.util.List;
 
-import org.hibernate.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.data.UserRepository;
@@ -38,10 +38,33 @@ public class UserController {
 	        return getUserRepository().getAllUsers();
 	    }
 
+
 	 @GetMapping("/login/{username}")
-	    public User getUser(@PathVariable("username") String Username) {
-	        return getUserRepository().getUser(Username);
-	    }
+	    public User getUserbyname(@PathVariable("username") String Username) {
+	        return  getUserRepository().getUserByname(Username);
+	 }
+	 @GetMapping("/login/{username}/{password}")
+	    public User getUser(@PathVariable("username") String Username,@PathVariable("password") String Password) {
+		User user = getUserRepository().getUserByname(Username);   
+		System.out.println(user.toString());
+			byte[] hashPassword = user.getHashPassword();
+					byte[] hashSalt = user.getSaltPassword();
+					try {
+						MessageDigest md;
+						md = MessageDigest.getInstance("SHA-512");
+						md.update(hashSalt);
+						
+						byte[] hashedPassword = md.digest(Password.getBytes(StandardCharsets.UTF_8));
+						 if(Arrays.equals(hashedPassword, hashPassword)) {
+							 return  getUserRepository().getUser(Username,Password);
+					            }
+					} catch (NoSuchAlgorithmException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return null;
+					}
+			
 	 
 	 @PostMapping("/")
 	    public User postUser(@RequestBody User user) {

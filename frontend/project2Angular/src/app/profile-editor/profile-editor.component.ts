@@ -37,9 +37,5 @@ export class ProfileEditorComponent {
 			person: person
     }
     this.ProfileEditorService.InsertUser(User).subscribe();
-		var ob = JSON.stringify(User);
-		alert(
-			ob
-    );
 	}
 }

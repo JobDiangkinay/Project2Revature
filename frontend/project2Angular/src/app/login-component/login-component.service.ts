@@ -8,9 +8,13 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 export class LoginComponentService {
   private loginUrl = 'http://localhost:8080/users/login';
   constructor(private httpClient:HttpClient) { }
-
+/*
   LoginUser(): Observable<User>{
     return this.httpClient.get<User>(this.loginUrl);
+  }*/
+  LoginUser(username: string,password:string): Observable<User>{
+    const url = `${this.loginUrl}/${username}/${password}`;
+    return this.httpClient.get<User>(url);
   }
 }
 
