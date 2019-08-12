@@ -29,9 +29,6 @@ public class ArticleRepository {
 	}
 	
 	public List<Article> getUserArticles(Integer id){
-//		Query<List<Article>> query = getSession().createQuery("FROM Article a WHERE a.person.id = :id", Article.class).list();
-//		return query.setParameter("id",person.getId());
-	System.out.println(id);
 		String hql = "from Article a WHERE a.person.id = :id";
 		Query<Article> query = getSession().createQuery(hql,Article.class);
 		query.setParameter("id", id);
