@@ -54,6 +54,8 @@ public class UserController {
 			if (Arrays.equals(hashedPassword, hashPassword)) {
 				User curUser = getUserRepository().getUser(Username);
 				setSession(curUser.getUsername(),curUser.getUserType(),curUser.getPerson().getId() ,session);
+				curUser.setHashPassword(null);
+				curUser.setSaltPassword(null);
 				return curUser;
 			}
 		} catch (NoSuchAlgorithmException e) {

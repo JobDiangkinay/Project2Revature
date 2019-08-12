@@ -10,6 +10,7 @@ export class UserinfoService {
 
   private personUrl = 'http://localhost:8080/persons/';
   private updatePersonUrl = 'http://localhost:8080/persons/update';
+  private currentPersonUrl = 'http://localhost:8080/persons/currentUser';
   constructor(private httpClient:HttpClient) { }
 
   getPersons(): Observable<Person[]> {
@@ -19,6 +20,15 @@ export class UserinfoService {
   getPersonById(id: number): Observable<Person> {
     const url = `${this.personUrl}/${id}`;
     return this.httpClient.get<Person>(url);
+  }
+
+  getSetUser(): Observable<Person>{
+    return this.httpClient.get<Person>('http://localhost:8080/users/login/JobUserTry/trypass');
+  }
+
+  getCurrentPerson(): Observable<Person>{
+    const url = `${this.personUrl}/currentUser`;
+    return this.httpClient.get<Person>('http://localhost:8080/persons/currentUser');
   }
 
   updatePersonInfo(person: Person): Observable<Person>{

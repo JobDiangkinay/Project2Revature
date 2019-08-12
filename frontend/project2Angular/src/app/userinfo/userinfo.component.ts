@@ -21,7 +21,9 @@ export class UserinfoComponent implements OnInit {
   constructor(private userInfoService: UserinfoService) { }
 
   ngOnInit() {
-    this.userInfoService.getPersonById(1).subscribe(person => this.personSpec = person);
+    //this.userInfoService.getSetUser();
+    //this.userInfoService.getPersonById(5).subscribe(person => this.personSpec = person);
+    this.userInfoService.getCurrentPerson().subscribe(person => this.personSpec = person);
     this.persons = this.userInfoService.getPersons();
   }
   
@@ -30,6 +32,7 @@ export class UserinfoComponent implements OnInit {
   phoneNumber:String = "9494909895";
 
   updateInfo(formData){
+   
     let newPer = new Person(this.personSpec.id,this.personSpec.firstName,this.personSpec.lastName,formData.newPhone,formData.newEmail);
     this.userInfoService.updatePersonInfo(newPer).subscribe(person => this.personSpec = person);
     this.ngOnInit();

@@ -2,6 +2,8 @@ package com.revature.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,6 +37,17 @@ public class PersonController {
 	@GetMapping("/{id}")
 	public Person getSpecificPerson(@PathVariable("id") int id) {
 		return getPersonRepository().getSpecificPerson(id);
+	}
+	
+	@GetMapping("/currentUser")
+	public Person getCurrentUserPerson(HttpSession session) {
+		Person person = new Person();
+		if (session.getAttribute("personId") != null) {
+			int id = (Integer) session.getAttribute("personId");
+			person = getPersonRepository().getSpecificPerson(id);
+			return person;
+		}
+			return person;
 	}
 
 	@PostMapping("/")

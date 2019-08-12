@@ -11,8 +11,7 @@
     </tr>
     <tr>
         <input type="submit" value="Login" 
-        (click)="onClickSubmit(username.value,  password.value)"
-        [routerLink]="'/User'">
+        (click)="onClickSubmit(username.value,  password.value);redirectMethod()">
     </tr>
     </table>
 </form>
