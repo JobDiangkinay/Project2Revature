@@ -1,5 +1,5 @@
 <div>
-    <div *ngIf="personSpec">
+    <div *ngIf="showUserInfo">
         <h3>User Information</h3>
         <table>
             <tr>
@@ -39,4 +39,4 @@
     
 </div>
 <app-userarticle></app-userarticle>
-<app-editor-handle-article></app-editor-handle-article>
+<app-editor-handle-article *ngIf="showEditorPanel"></app-editor-handle-article>

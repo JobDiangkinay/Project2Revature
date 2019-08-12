@@ -15,21 +15,32 @@ export class UserinfoComponent implements OnInit {
   personById:Observable<Person>
   personSpec:Person;
   personNew:Person;
+  userSpec:User;
   showUpdate:boolean = false;
   currentUserType:User;
+  showUserInfo:boolean = false;
+  showEditorPanel:boolean = false;
 
   constructor(private userInfoService: UserinfoService) { }
 
   ngOnInit() {
-    //this.userInfoService.getSetUser();
     //this.userInfoService.getPersonById(5).subscribe(person => this.personSpec = person);
-    this.userInfoService.getCurrentPerson().subscribe(person => this.personSpec = person);
+    this.userInfoService.getCurrentPerson().subscribe(person => {this.personSpec = person, this.checkIfUserAvail(person)});
     this.persons = this.userInfoService.getPersons();
   }
-  
-  firstName:String = "Juan";
-  lastName:String = "Diangkinay";
-  phoneNumber:String = "9494909895";
+
+  checkIfUserAvail(person:Person){
+    if(person.firstName != null){
+      this.showUserInfo = true;
+      this.userInfoService.getCurrentUserType().subscribe(user => {this.userSpec = user, this.checkIfUserEditor(user)});
+		}
+  }
+
+  checkIfUserEditor(user:User){
+    if(user.userType == "EDITOR"){
+      this.showEditorPanel = true;
+    }
+  }
 
   updateInfo(formData){
    
