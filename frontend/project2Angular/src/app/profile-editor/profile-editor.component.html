@@ -1,46 +1,42 @@
 <form [formGroup]="profileForm">    
     <table>
-        Signup
-        <tr>
-  <label>
+    Signup
+    <tr>
       <td>Username:</td>
       <td><input type="text" formControlName="UserName" #username></td>
-    </label>
-  </tr>
-  <tr>
-   <label>
+    </tr>
+    
+    <tr>
       <td>Password:</td>
       <td><input type="password" formControlName="Password" #password></td>
-    </label>
-  </tr>
-  <tr>
-    <label>
-        <td>firstname:</td>
-            <td><input type="text" formControlName="FirstName" #firstname></td>
-    </label>
-  </tr>
-  <tr>
-      <label>
-          <td>Lastname:</td>
-              <td><input type="text" formControlName="LastName" #lastname></td>
-    </label>
-  </tr>
-  <tr>
-      <label>
-          <td>Phonenumber:</td>
-              <td><input type="text" formControlName="PhoneNumber" #phonenumber></td>
-    </label>
-  </tr>
-  <tr>
-    <label>
-        <td>Email:</td>
-            <td><input type="text" formControlName="Email" #email></td>
-    </label>
-  </tr>
-  <tr>
+    </tr>
+    
+    <tr>
+      <td>firstname:</td>
+      <td><input type="text" formControlName="FirstName" #firstname></td>
+    </tr>
+    
+    <tr>
+      <td>Lastname:</td>
+      <td><input type="text" formControlName="LastName" #lastname></td>
+    </tr>
+    
+    <tr>
+      <td>Phonenumber:</td>
+      <td><input type="text" formControlName="PhoneNumber" #phonenumber></td>    
+    </tr>
+    
+    <tr>
+     <td>Email:</td>
+     <td><input type="text" formControlName="Email" #email></td>
+    </tr>
+    
+    <tr>
     <input type = "submit" 
             value = "Sign Up" 
-            (click) = "onClickSubmit(username.value,  password.value,firstname.value, lastname.value,phonenumber.value, email.value)" >
-  </tr>
-    </table>
+            (click) = "onClickSubmit(username.value,  password.value,firstname.value, lastname.value,phonenumber.value, email.value)" 
+            [routerLink]="'/User'">
+    </tr>
+    
+  </table>
   </form>

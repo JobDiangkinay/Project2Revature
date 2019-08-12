@@ -24,7 +24,7 @@ public class UserRepository {
         return entityManager.unwrap(Session.class);
     }
 	
-	public User getUser(String Username,String password) {
+	public User getUser(String Username) {
 		Query<User> query = getSession().createQuery("SELECT u FROM User u WHERE u.username = :username", User.class);
 		return query.setParameter("username", Username).getSingleResult();
 	}
@@ -36,10 +36,4 @@ public class UserRepository {
         getSession().save("User", user);
         return user;
     }
-
-	public User getUserByname(String username) {
-		Query<User> query = getSession().createQuery("SELECT u FROM User u WHERE u.username = :username", User.class);
-		return query.setParameter("username", username).getSingleResult();
-	}
-
 }

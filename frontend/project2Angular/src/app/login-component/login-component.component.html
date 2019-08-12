@@ -1,22 +1,18 @@
 <form [formGroup]="profileForm">
     <table>
         Login
-        <tr>
-    <label>
+    <tr>
         <td>Username:</td>
         <td><input type="text" formControlName="UserName" #username></td>
-    </label>
     </tr>
-    <tr>
-    <label>
+    <tr> 
         <td>Password:</td>
         <td><input type="password" formControlName="Password" #password></td>
-    </label>
     </tr>
     <tr>
-    <label>
-        <input type="submit" value="Login" (click)="onClickSubmit(username.value,  password.value)">
-    </label>
+        <input type="submit" value="Login" 
+        (click)="onClickSubmit(username.value,  password.value)"
+        [routerLink]="'/User'">
     </tr>
     </table>
 </form>

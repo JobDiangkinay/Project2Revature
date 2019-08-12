@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -42,18 +43,16 @@ public class UserController {
 
 	@GetMapping("/login/{username}/{password}")
 	public User getUser(@PathVariable("username") String Username, @PathVariable("password") String Password, HttpSession session) {
-		User user = getUserRepository().getUserByname(Username);
-		System.out.println(user.toString());
+		User user = getUserRepository().getUser(Username);
 		byte[] hashPassword = user.getHashPassword();
 		byte[] hashSalt = user.getSaltPassword();
 		try {
 			MessageDigest md;
 			md = MessageDigest.getInstance("SHA-512");
 			md.update(hashSalt);
-
 			byte[] hashedPassword = md.digest(Password.getBytes(StandardCharsets.UTF_8));
 			if (Arrays.equals(hashedPassword, hashPassword)) {
-				User curUser = getUserRepository().getUser(Username, Password);
+				User curUser = getUserRepository().getUser(Username);
 				setSession(curUser.getUsername(),curUser.getUserType(), session);
 				return curUser;
 			}

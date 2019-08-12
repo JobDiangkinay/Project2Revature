@@ -36,6 +36,7 @@ export class ProfileEditorComponent {
 			password: Password,
 			person: person
     }
-    this.ProfileEditorService.InsertUser(User).subscribe();
+	this.ProfileEditorService.InsertUser(User).subscribe();
+	
 	}
 }
