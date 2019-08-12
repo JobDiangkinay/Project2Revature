@@ -3,6 +3,7 @@ import { UserinfoService } from './userinfo.service';
 import { Observable } from 'rxjs';
 import { Person } from './person';
 import { User } from '../profile-editor/User';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-userinfo',
@@ -21,7 +22,7 @@ export class UserinfoComponent implements OnInit {
   showUserInfo:boolean = false;
   showEditorPanel:boolean = false;
 
-  constructor(private userInfoService: UserinfoService) { }
+  constructor(private userInfoService: UserinfoService, private router: Router) { }
 
   ngOnInit() {
     //this.userInfoService.getPersonById(5).subscribe(person => this.personSpec = person);

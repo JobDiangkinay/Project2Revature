@@ -13,6 +13,7 @@ import { ProfileEditorComponent } from './profile-editor/profile-editor.componen
 import { UserarticleComponent } from './userarticle/userarticle.component';
 import { LoginComponentComponent } from './login-component/login-component.component';
 import { EditorHandleArticleComponent } from './editor-handle-article/editor-handle-article.component';
+import { AppmainComponent } from './appmain/appmain.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { EditorHandleArticleComponent } from './editor-handle-article/editor-han
     ProfileEditorComponent,
     UserarticleComponent,
     LoginComponentComponent,
-    EditorHandleArticleComponent
+    EditorHandleArticleComponent,
+    AppmainComponent
   ],
   imports: [
     BrowserModule,
