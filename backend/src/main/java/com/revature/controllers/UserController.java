@@ -54,7 +54,7 @@ public class UserController {
 			byte[] hashedPassword = md.digest(Password.getBytes(StandardCharsets.UTF_8));
 			if (Arrays.equals(hashedPassword, hashPassword)) {
 				User curUser = getUserRepository().getUser(Username, Password);
-				setSession(curUser.getUsername(),curUser.getUserType(), session);
+				setSession(curUser.getUsername(),curUser.getUserType(),curUser.getPerson().getId() ,session);
 				return curUser;
 			}
 		} catch (NoSuchAlgorithmException e) {
@@ -87,14 +87,16 @@ public class UserController {
 		return getUserRepository().postUser(newUser);
 	}
 
-	public void setSession(String username, String userType,HttpSession session) {
+	public void setSession(String username, String userType, int personId,HttpSession session) {
 		session.setAttribute("username", username);
 		session.setAttribute("userType", userType);
+		session.setAttribute("personId", personId);
 	}
 	
 	@GetMapping("/logout")
 	public void logout(HttpSession session) {
 		session.removeAttribute("username");
 		session.removeAttribute("usertype");
+		session.removeAttribute("personId");
 	}
 }
