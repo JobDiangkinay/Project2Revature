@@ -4,6 +4,9 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import javax.servlet.http.HttpSession;
+
+
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +32,7 @@ public class ArticleRepository {
 	}
 	
 	public List<Article> getUserArticles(Integer id){
+		
 		String hql = "from Article a WHERE a.person.id = :id";
 		Query<Article> query = getSession().createQuery(hql,Article.class);
 		query.setParameter("id", id);
@@ -41,6 +45,13 @@ public class ArticleRepository {
 		return newArticle;
 	}
 	
+
+//	public List<Article> getSavedArticles(int personId){
+//		int[] articleId = savedArray(personId);
+//		String hql = "SELECT c FROM Article c, ";
+//		Query<Article> query = getSession().createQuery();
+//	}
+
 	public Article updateArticle(Article article) {
 		Article updateArticle = article;
 		getSession().update("Article",updateArticle);
@@ -53,5 +64,10 @@ public class ArticleRepository {
 		        "SELECT c FROM Article c WHERE c.articleStatus = :pending", Article.class);
 		    return query.setParameter("pending", pending).list();
 	}
+	
+//	public int[] savedArray(int personId) {
+//		int[] query = (int[]) getSession().createQuery("SELECT p.saved from Person p where p.id= :id").setParameter("id", personId).uniqueResult();
+//		return query;
+//	}
 	
 }
