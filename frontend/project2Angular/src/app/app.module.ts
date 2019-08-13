@@ -16,8 +16,7 @@ import { EditorHandleArticleComponent } from './editor-handle-article/editor-han
 import { ArticleViewComponent } from './article-view/article-view.component';
 import { AppmainComponent } from './appmain/appmain.component';
 import { PendingArticleComponent } from './pending-article/pending-article.component';
-
-
+import { MatTabsModule } from '@angular/material/tabs';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +41,8 @@ import { PendingArticleComponent } from './pending-article/pending-article.compo
     MatSidenavModule,
     MatListModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
