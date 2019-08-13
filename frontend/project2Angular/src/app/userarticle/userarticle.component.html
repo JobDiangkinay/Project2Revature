@@ -1,8 +1,12 @@
+<h3>Saved Articles</h3>
+<div>
+
+</div>
+
 <h3>List of User's Articles</h3>
 
-<button (click)="showUserArticles()">Show Articles</button>
 <div>
-    <div *ngIf="showArticles">
+    <div >
         <table>
             <tr>
                 <th>Title</th>
@@ -11,7 +15,7 @@
                 <th>Category</th>
                 <th>Article's Status</th>
             </tr>
-            <tr *ngFor="let article of articles">
+            <tr *ngFor="let article of userArticles">
                 <td>{{article.title}}</td>
                 <td>{{article.content}}</td>
                 <td>{{article.date}}</td>

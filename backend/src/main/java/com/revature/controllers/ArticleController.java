@@ -2,6 +2,8 @@ package com.revature.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,10 +35,23 @@ public class ArticleController {
         return getArticleRepository().getAllArticles();
     }
 	
-	@GetMapping("/userarticle/{id}")
-	public List<Article> getUserArticles(@PathVariable Integer id){
-		return getArticleRepository().getUserArticles(id);
+//	@GetMapping("/userarticle/{id}")
+//	public List<Article> getUserArticles(@PathVariable Integer id){
+//		return getArticleRepository().getUserArticles(id);
+//	}
+	
+	@GetMapping("/userarticle/")
+	public List<Article> getUserArticles(HttpSession session){
+		int personId = (int)session.getAttribute("personId");
+		System.out.println("This is "+personId);
+		return getArticleRepository().getUserArticles(personId);
 	}
+	
+//	@GetMapping("/savedarticle/")
+//	public List<Article> getSavedArticles(HttpSession session){
+//		int personId = (int)session.getAttribute("personId");
+//		return getArticleRepository().getSavedArticles(personId);
+//	}
  
 	@PostMapping("/")
     public Article postArticle(@RequestBody Article article) {

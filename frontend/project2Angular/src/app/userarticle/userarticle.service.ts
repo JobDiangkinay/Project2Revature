@@ -10,7 +10,8 @@ import { Person } from '../userinfo/person';
 export class UserarticleService {
 
   private articleUrl = 'http://localhost:8080/articles/';
-  private userArticlesUrl = 'http://localhost:8080/articles/userarticle'
+  private userArticlesUrl = 'http://localhost:8080/articles/userarticle/';
+  private savedArticleUrl = 'http://localhost:8080/articles/savedarticle/';
 
   constructor(private httpClient:HttpClient) { }
 
@@ -18,9 +19,12 @@ export class UserarticleService {
     return this.httpClient.get<Article[]>(this.articleUrl);
   }
 
-  getUserArticles(id: Number): Observable<Article[]>{
-    const url = `${this.userArticlesUrl}/${id}`;
-    return this.httpClient.get<Article[]>(url);
+  getUserArticles(): Observable<Article[]>{
+    return this.httpClient.get<Article[]>(this.userArticlesUrl);
+  }
+
+  getSavedArticles(): Observable<Article[]>{
+    return this.httpClient.get<Article[]>(this.savedArticleUrl);
   }
 
   createArticle(article: Article): Observable<Article>{

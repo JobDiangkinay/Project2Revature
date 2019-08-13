@@ -1,10 +1,15 @@
 package com.revature.models;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -23,6 +28,13 @@ public class Person {
 	private String phoneNumber;
 	@Column(name = "email")
 	private String email;
+	
+//	@ManyToMany
+//	@JoinTable(
+//			name="saved",
+//			joinColumns = @JoinColumn(name = "personId"),
+//			inverseJoinColumns = @JoinColumn(name = "articleId"))
+//	private List<Article> saved;
 	
 	public Person() {
 		super();
@@ -76,4 +88,14 @@ public class Person {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+//	public List<Article> getSaved() {
+//		return saved;
+//	}
+//
+//	public void setSaved(List<Article> saved) {
+//		this.saved = saved;
+//	}
+	
+	
 }
