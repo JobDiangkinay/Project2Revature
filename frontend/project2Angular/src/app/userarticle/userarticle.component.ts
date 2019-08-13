@@ -27,12 +27,12 @@ export class UserarticleComponent implements OnInit {
 //    this.userArticleService.getUserArticles(this.personSpec.id).subscribe(articleList => this.articles = articleList);
       this.userInfoService.getCurrentPerson().subscribe(person => this.personSpec = person);
       this.userArticleService.getUserArticles().subscribe(articleList => this.userArticles = articleList);
-      this.userArticleService.getSavedArticles().subscribe(savedArticleList => this.savedArticles = savedArticleList);
+      //this.userArticleService.getSavedArticles().subscribe(savedArticleList => this.savedArticles = savedArticleList);
   }
 
   createArticle(formData){
     let newArticle = new Article(0,formData.newTitle,formData.newContent,this.getDate(),formData.category,"Pending",this.personSpec);
-    this.userArticleService.createArticle(newArticle).subscribe();
+    this.userArticleService.createArticle(newArticle).subscribe(article => this.ngOnInit());
     this.showCreate = false;
     this.ngOnInit();
   }

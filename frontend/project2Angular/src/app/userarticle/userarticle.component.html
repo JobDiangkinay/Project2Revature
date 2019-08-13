@@ -2,25 +2,23 @@
     <div class="headeruser">
         <h3>List of User's Articles</h3>
     </div>
-    <button (click)="showUserArticles()">Show Articles</button>
     <div>
-        <div *ngIf="showArticles">
-            <table class="table" >
-                <tr>
-                    <th>Title</th>
-                    <th>Date Created</th>
-                    <th>Category</th>
-                    <th>Article's Status</th>
-                </tr>
-                <tr *ngFor="let article of articles | async">
-                    <td>{{article.title}}</td>
-                    <td>{{article.date}}</td>
-                    <td>{{article.category}}</td>
-                    <td>{{article.articleStatus}}</td>
-                </tr>
-            </table>
-        </div>
+        <table class="table">
+            <tr>
+                <th>Title</th>
+                <th>Date Created</th>
+                <th>Category</th>
+                <th>Article's Status</th>
+            </tr>
+            <tr *ngFor="let article of userArticles">
+                <td>{{article.title}}</td>
+                <td>{{article.date}}</td>
+                <td>{{article.category}}</td>
+                <td>{{article.articleStatus}}</td>
+            </tr>
+        </table>
     </div>
+
 
 
     <button (click)="showCreateComponent()">Create New Article</button>
