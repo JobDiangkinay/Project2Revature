@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="!showSelArticle">
     <h3>List of Pending Articles</h3>
         <table>
             <tr>
@@ -15,3 +15,4 @@
             </tr>
         </table>
 </div>
+<app-pending-article [selectArticle]="selArticle" *ngIf="showSelArticle"></app-pending-article>

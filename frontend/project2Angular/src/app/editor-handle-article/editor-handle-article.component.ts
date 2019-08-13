@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Person } from "../userinfo/person";
-import {Article} from "../userarticle/article";
+import { Article } from "../userarticle/article";
 import { EditorHandleArticleService } from './editor-handle-article.service';
 import { Observable } from 'rxjs';
 
@@ -10,15 +10,24 @@ import { Observable } from 'rxjs';
   styleUrls: ['./editor-handle-article.component.css']
 })
 export class EditorHandleArticleComponent implements OnInit {
+  selArticle: Article;
+  showSelArticle: boolean = false;
 
-  pendingArticles:Observable<Article[]>;
+  pendingArticles: Observable<Article[]>;
   constructor(private editorHandleArticleService: EditorHandleArticleService) { }
 
   ngOnInit() {
     this.pendingArticles = this.editorHandleArticleService.getPendingArticles();
   }
 
-  handleSpecArticle(curArticle: Article){
-    let selArticle = curArticle;
+  closeHandleSpecArticle() {
+    this.selArticle = null;
+    this.showSelArticle = false;
+  }
+
+  handleSpecArticle(curArticle: Article) {
+
+    this.selArticle = curArticle;
+    this.showSelArticle = true;
   }
 }
