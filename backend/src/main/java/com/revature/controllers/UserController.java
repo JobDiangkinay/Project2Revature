@@ -64,6 +64,19 @@ public class UserController {
 		}
 		return null;
 	}
+	
+	@GetMapping("/currentUserType")
+	public User getUserType(HttpSession session) {
+		User curUser = new User();
+		if (session.getAttribute("userType") != null) {
+			String userType = (String) session.getAttribute("userType");
+			String username = (String) session.getAttribute("username");
+			curUser.setUserType(userType);
+			curUser.setUsername(username);
+		}
+		return curUser;
+		
+	}
 
 	@PostMapping("/")
 	public User postUser(@RequestBody User user) {

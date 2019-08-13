@@ -14,6 +14,8 @@ import { UserarticleComponent } from './userarticle/userarticle.component';
 import { LoginComponentComponent } from './login-component/login-component.component';
 import { EditorHandleArticleComponent } from './editor-handle-article/editor-handle-article.component';
 import { ArticleViewComponent } from './article-view/article-view.component';
+import { AppmainComponent } from './appmain/appmain.component';
+import { PendingArticleComponent } from './pending-article/pending-article.component';
 
 
 @NgModule({
@@ -25,7 +27,9 @@ import { ArticleViewComponent } from './article-view/article-view.component';
     UserarticleComponent,
     LoginComponentComponent,
     EditorHandleArticleComponent,
-    ArticleViewComponent
+    ArticleViewComponent,
+    AppmainComponent,
+    PendingArticleComponent
   ],
   imports: [
     BrowserModule,

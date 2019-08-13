@@ -45,11 +45,18 @@ public class ArticleRepository {
 		return newArticle;
 	}
 	
+
 //	public List<Article> getSavedArticles(int personId){
 //		int[] articleId = savedArray(personId);
 //		String hql = "SELECT c FROM Article c, ";
 //		Query<Article> query = getSession().createQuery();
 //	}
+
+	public Article updateArticle(Article article) {
+		Article updateArticle = article;
+		getSession().update("Article",updateArticle);
+		return updateArticle;
+	}
 	
 	public List<Article> getAllPendingArticles() {
 		String pending = "pending";

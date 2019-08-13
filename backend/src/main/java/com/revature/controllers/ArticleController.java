@@ -62,5 +62,10 @@ public class ArticleController {
 	public List<Article> getPendingArticles(){
 		return getArticleRepository().getAllPendingArticles();
 	}
+	
+	@PostMapping("/update")
+	public Article updateArticle(@RequestBody Article article) {
+		return getArticleRepository().updateArticle(article);
+	}
 
 }

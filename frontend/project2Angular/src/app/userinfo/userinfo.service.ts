@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Person } from './person';
+import { User } from '../login-component/User';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ export class UserinfoService {
   private personUrl = 'http://localhost:8080/persons/';
   private updatePersonUrl = 'http://localhost:8080/persons/update';
   private currentPersonUrl = 'http://localhost:8080/persons/currentUser';
+  private currentUserUrl = 'http://localhost:8080/users/currentUserType';
   constructor(private httpClient:HttpClient) { }
 
   getPersons(): Observable<Person[]> {
@@ -22,8 +24,8 @@ export class UserinfoService {
     return this.httpClient.get<Person>(url);
   }
 
-  getSetUser(): Observable<Person>{
-    return this.httpClient.get<Person>('http://localhost:8080/users/login/JobUserTry/trypass');
+  getCurrentUserType(): Observable<User>{
+    return this.httpClient.get<User>(this.currentUserUrl);
   }
 
   getCurrentPerson(): Observable<Person>{
