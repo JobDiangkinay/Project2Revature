@@ -6,7 +6,7 @@ import {ProfileEditorComponent} from './profile-editor/profile-editor.component'
 const routes: Routes = [
   { path: 'User', component: UserinfoComponent },
   { path: 'Login', component:  LoginComponentComponent},
-  { path: 'Signup', component:  ProfileEditorComponent}  
+  { path: 'Login', component:  ProfileEditorComponent},
 ];
 
 @NgModule({

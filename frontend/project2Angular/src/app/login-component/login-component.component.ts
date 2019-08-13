@@ -22,8 +22,6 @@ export class LoginComponentComponent {
 		Password: new FormControl(''),
 	});
 	onClickSubmit(UserName, Password) {
-		username: UserName;
-		password: Password;
 		this.LoginComponentService.LoginUser(UserName, Password).subscribe(person => { this.logInPerson = person, this.redirectMethod(person)});
 		//this.redirectMethod();
 	}

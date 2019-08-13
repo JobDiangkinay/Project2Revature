@@ -14,4 +14,7 @@
         (click)="onClickSubmit(username.value,  password.value);redirectMethod()">
     </tr>
     </table>
+    <button pButton (click)="toggle()">SignUp</button>
+    <app-profile-editor *ngIf="Loginview"></app-profile-editor>
+
 </form>

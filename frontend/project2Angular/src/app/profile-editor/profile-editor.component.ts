@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, SystemJsNgModuleLoader } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ProfileEditorService} from './profile-editor.service';
 import { Observable } from 'rxjs';
 import { User } from './User';
+import { Person } from '../userinfo/person';
+import {Router} from '@angular/router';
 
 @Component({
 	selector: 'app-profile-editor',
@@ -10,33 +12,28 @@ import { User } from './User';
 	styleUrls: ['./profile-editor.component.css']
 })
 export class ProfileEditorComponent {
-  
-  constructor(private ProfileEditorService: ProfileEditorService){}
 
-	profileForm = new FormGroup({
-		UserName: new FormControl(''),
-		Password: new FormControl(''),
-		FirstName: new FormControl(''),
-		LastName: new FormControl(''),
-		PhoneNumber: new FormControl(''),
-		Email: new FormControl(''),
-	});
-	onClickSubmit(UserName, Password, FirstName, LastName, PhoneNumber, Email) {
-		var person = {
-			id: 0,
-			firstName: FirstName,
-			lastName: LastName,
-			phoneNumber: PhoneNumber,
-			email: Email
-		};
-		var User = {
-			id: 0,
-			username: UserName,
-			userType: "USER",
-			password: Password,
-			person: person
-    }
-	this.ProfileEditorService.InsertUser(User).subscribe();
-	
+  constructor(private ProfileEditorService: ProfileEditorService, private router: Router){}
+	updateInfo(formdata){
+		let newUser = new User(0,formdata.Username,"USER",formdata.Password, 
+		new Person(0,formdata.firstname,formdata.lastname,formdata.Phonenumber,formdata.Email));
+
+	/*	
+		let Usersname = this.ProfileEditorService.checkusername(formdata.firstname);
+		console.log(Usersname);
+		if(Usersname == ""){
+			this.ProfileEditorService.InsertUser(newUser).subscribe();
+		}
+		this.ProfileEditorService.InsertUser(newUser).subscribe();
+		this.router.navigate(['./Login']);
 	}
+	*/
+		/*
+		redirectMethod(User:User,formdata){
+		if(formdata.Username != this.logInPerson.username){
+			this.router.navigate(['./User']);
+		}
+		this.router.navigate(['./Signup']);
+	}*/
+}
 }

@@ -7,6 +7,7 @@ import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.persistence.NoResultException;
 import javax.servlet.http.HttpSession;
 
 
@@ -64,6 +65,13 @@ public class UserController {
 		}
 		return null;
 	}
+	@GetMapping("/{username}")
+	public String getUser(@PathVariable("username") String Username) {
+		String username = "";
+		username = getUserRepository().getUsername(Username);
+		return username;
+	}
+
 
 	@PostMapping("/")
 	public User postUser(@RequestBody User user) {
