@@ -1,6 +1,9 @@
 <div *ngIf="!showSelArticle">
-    <h3>List of Pending Articles</h3>
-        <table>
+    <div class="container userinfo">
+        <div class="headeruser">
+            <h3>List of Pending Articles</h3>
+        </div>
+        <table class="table">
             <tr>
                 <th>Article Id</th>
                 <th>Title</th>
@@ -14,5 +17,6 @@
                 <td>{{pendingArticle.date}}</td>
             </tr>
         </table>
+    </div>
 </div>
 <app-pending-article [selectArticle]="selArticle" *ngIf="showSelArticle"></app-pending-article>
