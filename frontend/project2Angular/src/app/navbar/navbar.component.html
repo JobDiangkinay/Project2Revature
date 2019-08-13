@@ -3,7 +3,7 @@
      <a mat-button [routerLink]="'/'">  <h1>Daily Bugle</h1> </a>
       <span class="menu-spacer"></span>
       <div>
-        <a mat-button [routerLink]="'/User'"> Account </a>
+        <a mat-button [routerLink]="'/User'" *ngIf="showAccountButton"> Account </a>
         <a mat-button [routerLink]="'/Login'"> Login </a>
       </div>
     </mat-toolbar-row>

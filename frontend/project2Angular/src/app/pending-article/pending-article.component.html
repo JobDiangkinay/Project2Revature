@@ -1,0 +1,17 @@
+<div *ngIf="!showEditorPanel">
+    <div *ngIf="currentPendingArticle">
+        <h2>Title: {{currentPendingArticle.title}} </h2>
+        <div>Author: {{currentPendingArticle.person.firstName}} {{currentPendingArticle.person.lastName}}</div>
+        <div>Category: {{currentPendingArticle.category}} </div>
+        <div>Date: {{currentPendingArticle.date}}</div>
+        <br />
+        <div>
+            {{currentPendingArticle.articleContent}}
+        </div>
+        <br />
+        <span><button (click)="updateArticleStatus(true)">Accept</button></span>
+        <span><button (click)="updateArticleStatus(false)">Deny</button></span>
+        <span><button (click)="handleBackButton()">Back</button></span>
+    </div>
+</div>
+<app-editor-handle-article *ngIf="showEditorPanel"></app-editor-handle-article>

@@ -41,6 +41,12 @@ public class ArticleRepository {
 		return newArticle;
 	}
 	
+	public Article updateArticle(Article article) {
+		Article updateArticle = article;
+		getSession().update("Article",updateArticle);
+		return updateArticle;
+	}
+	
 	public List<Article> getAllPendingArticles() {
 		String pending = "pending";
 		Query<Article> query = getSession().createQuery(

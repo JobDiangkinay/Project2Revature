@@ -1,4 +1,6 @@
 <form #SignupPerson="ngForm" (ngSubmit)="updateInfo(SignupPerson.value)">
+<app-navbar></app-navbar>
+<form [formGroup]="profileForm">    
     <table>
         <tr>
             <td>Username: </td>
