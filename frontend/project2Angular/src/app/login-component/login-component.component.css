@@ -1,0 +1,10 @@
+.cardbody{
+    width: 25%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+}
+.signupredirectbutton{border-color:#c2185b; }
+.signupredirectbutton:hover{background-color: #c2185b;color: white !important}
+.loginbutton{background-color:#c2185b;
+border-color: #c2185b;}

@@ -1,0 +1,9 @@
+.cardbody{width: 25%;
+    margin-left: auto;
+margin-right: auto;
+ margin-top: 5% } 
+ 
+.loginredirectbutton{border-color:#c2185b;}
+.loginredirectbutton:hover{background-color: #c2185b;color: white !important}
+.signupbutton{background-color:#c2185b;
+border-color: #c2185b;}
