@@ -3,7 +3,7 @@
         <div class="headeruser">
             <h3>List of Pending Articles</h3>
         </div>
-        <a (click)="refreshButton()" class="linkClick">Refresh</a>
+        <button (click)="refreshButton()" class="btn linkClick">Refresh</button>
         <div style="background: #424242; padding-left: 3%;">
             <mat-form-field>
                 <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter" style="color: pink">
