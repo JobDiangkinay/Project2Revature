@@ -38,13 +38,12 @@ public class UserRepository {
         return user;
     }
 
-	public String getUsername(String username) {
-		
+	public User getUsername(String username) {
 		try {
-			@SuppressWarnings("unchecked")
-			Query<String> query = getSession().createQuery("SELECT u.username FROM User u WHERE u.username = :username");
+			Query<User> query = getSession().createQuery("SELECT u FROM User u WHERE u.username = :username", User.class);
 			return query.setParameter("username", username).getSingleResult();
 		}
+		
 		catch(NoResultException e){
 			return null;
 			}

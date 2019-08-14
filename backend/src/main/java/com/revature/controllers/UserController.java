@@ -66,10 +66,15 @@ public class UserController {
 		return null;
 	}
 	@GetMapping("/{username}")
-	public String getUser(@PathVariable("username") String Username) {
-		String username = "";
-		username = getUserRepository().getUsername(Username);
-		return username;
+	public User getUser(@PathVariable("username") String Username) {
+		try{User username = getUserRepository().getUsername(Username);
+		username.setSaltPassword(null);
+		username.setHashPassword(null);
+		username.setPerson(null);
+		username.setUserType(null);
+		return username;}
+		catch(NullPointerException e){return null;}
+		
 	}
 
 	

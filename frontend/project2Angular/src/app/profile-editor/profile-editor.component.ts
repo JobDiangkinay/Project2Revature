@@ -13,21 +13,20 @@ import { throwMatDialogContentAlreadyAttachedError } from '@angular/material';
 	styleUrls: ['./profile-editor.component.css']
 })
 export class ProfileEditorComponent {
-	Usersname:String;
+	UsersName:User;
 
   constructor(private ProfileEditorService: ProfileEditorService, private router: Router){}
 	updateInfo(formdata){
 		let newUser = new User(0,formdata.Username,"USER",formdata.Password, 
 		new Person(0,formdata.firstname,formdata.lastname,formdata.Phonenumber,formdata.Email));
-		this.ProfileEditorService.checkusername(formdata.firstname)
-		.subscribe(username => {this.Usersname = username,this.insertUser(username,newUser)});
+		this.ProfileEditorService.checkusername(formdata.Username)
+		.subscribe(username => {this.UsersName = username,this.insertUser(username,newUser)});
 		/*
 		this.ProfileEditorService.InsertUser(newUser).subscribe();
 		this.router.navigate(['./Login']);*/
 	}
 
-	insertUser(username:String, user:User){
-		console.log(username);
+	insertUser(username:User, user:User){
 		if(username == null){
 			this.ProfileEditorService.InsertUser(user).subscribe();
 		}

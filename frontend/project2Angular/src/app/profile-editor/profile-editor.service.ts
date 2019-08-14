@@ -9,20 +9,26 @@ import { User } from './User';
 export class ProfileEditorService {
 
   private signUpUrl = 'http://localhost:8080/users/';
-  constructor(private httpClient:HttpClient) { }
+  constructor(private httpClient:HttpClient) {
+    
+   }
+
 
   InsertUser(User: User): Observable<User>{
     return this.httpClient.post<User>(this.signUpUrl, User);
   }
-  checkusername(username: string): Observable<String>{
+  checkusername(username: string): Observable<User>{
+    
     const url = `${this.signUpUrl}${username}`;
-    return this.httpClient.get<String>(url);
+    return this.httpClient.get<User>(url);
   }
 
   
 }
 
+
 const httpOptions = {
+  responseType:'text',
   headers: new HttpHeaders({
     'Content-Type': 'application/json'
   })
