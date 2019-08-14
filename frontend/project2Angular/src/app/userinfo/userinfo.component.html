@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
-<div class="container userinfo" style="background: #424242;">
-    <div *ngIf="showUserInfo" style="color: white;">
+<div class="container userinfo" *ngIf="showUserInfo" style="background: #424242;">
+    <div  style="color: white;">
         <div class="headeruser">
             <h3>User Information</h3>
         </div>
@@ -42,5 +42,5 @@
     </div>
 
 </div>
-<app-userarticle></app-userarticle>
+<app-userarticle *ngIf="showUserInfo"></app-userarticle>
 <app-editor-handle-article *ngIf="showEditorPanel"></app-editor-handle-article>
