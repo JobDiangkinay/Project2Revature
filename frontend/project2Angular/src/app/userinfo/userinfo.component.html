@@ -1,7 +1,9 @@
 <app-navbar></app-navbar>
-<div>
+<div class="container userinfo">
     <div *ngIf="showUserInfo">
-        <h3>User Information</h3>
+        <div class="headeruser">
+            <h3>User Information</h3>
+        </div>
         <table>
             <tr>
                 <td>Name: </td>
@@ -16,13 +18,13 @@
                 <td>{{personSpec.email}}</td>
             </tr>
             <tr>
-                <button (click)="showUpdateComponent()">Update Info</button>
+                <button class="btn btn-primary clrBtn" (click)="showUpdateComponent()">Update Info</button>
             </tr>
         </table>
-        
+
     </div>
-    <div *ngIf="showUpdate">
-        <h3>Update Information</h3>
+    <div *ngIf="showUpdate" style="padding-top: 1%">
+        <h4>Update Information</h4>
         <form #updatePerson="ngForm" (ngSubmit)="updateInfo(updatePerson.value)">
             <table>
                 <tr>
@@ -31,13 +33,14 @@
                 </tr>
                 <tr>
                     <td>Phone Number: </td>
-                    <td><input type="text" name="newPhone" maxlength="10" ngModel required number minlength="10" maxlength="15"></td>
+                    <td><input type="text" name="newPhone" maxlength="10" ngModel required number minlength="10"
+                            maxlength="15"></td>
                 </tr>
-                <tr><input type="submit" value="Save Information" [disabled]="!updatePerson.valid"></tr>
+                <tr><input type="submit" class="btn btn-primary clrBtn" value="Save Information" [disabled]="!updatePerson.valid"></tr>
             </table>
         </form>
     </div>
-    
+
 </div>
 <app-userarticle></app-userarticle>
 <app-editor-handle-article *ngIf="showEditorPanel"></app-editor-handle-article>

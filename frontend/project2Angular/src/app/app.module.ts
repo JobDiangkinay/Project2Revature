@@ -13,10 +13,10 @@ import { ProfileEditorComponent } from './profile-editor/profile-editor.componen
 import { UserarticleComponent } from './userarticle/userarticle.component';
 import { LoginComponentComponent } from './login-component/login-component.component';
 import { EditorHandleArticleComponent } from './editor-handle-article/editor-handle-article.component';
+import { ArticleViewComponent } from './article-view/article-view.component';
 import { AppmainComponent } from './appmain/appmain.component';
 import { PendingArticleComponent } from './pending-article/pending-article.component';
-
-
+import { MatTabsModule } from '@angular/material/tabs';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +26,7 @@ import { PendingArticleComponent } from './pending-article/pending-article.compo
     UserarticleComponent,
     LoginComponentComponent,
     EditorHandleArticleComponent,
+    ArticleViewComponent,
     AppmainComponent,
     PendingArticleComponent
   ],
@@ -40,7 +41,8 @@ import { PendingArticleComponent } from './pending-article/pending-article.compo
     MatSidenavModule,
     MatListModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

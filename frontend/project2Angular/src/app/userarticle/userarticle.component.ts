@@ -12,8 +12,8 @@ import { Person } from '../userinfo/person';
 })
 export class UserarticleComponent implements OnInit {
 
-  articles: Article[];
-  showArticles: boolean = false;
+  userArticles: Article[];
+  savedArticles: Article[];
   showCreate: boolean = false;
   newArticle: Article;
   personSpec: Person;
@@ -23,20 +23,18 @@ export class UserarticleComponent implements OnInit {
     private userInfoService: UserinfoService) { }
 
   ngOnInit() {
-    this.userInfoService.getPersonById(1).subscribe(hero => this.personSpec = hero);
+//    this.userInfoService.getPersonById(1).subscribe(hero => this.personSpec = hero);
 //    this.userArticleService.getUserArticles(this.personSpec.id).subscribe(articleList => this.articles = articleList);
+      this.userInfoService.getCurrentPerson().subscribe(person => this.personSpec = person);
+      this.userArticleService.getUserArticles().subscribe(articleList => this.userArticles = articleList);
+      //this.userArticleService.getSavedArticles().subscribe(savedArticleList => this.savedArticles = savedArticleList);
   }
 
   createArticle(formData){
     let newArticle = new Article(0,formData.newTitle,formData.newContent,this.getDate(),formData.category,"Pending",this.personSpec);
-    this.userArticleService.createArticle(newArticle).subscribe();
+    this.userArticleService.createArticle(newArticle).subscribe(article => this.ngOnInit());
     this.showCreate = false;
-    this.showUserArticles();
-  }
-
-  showUserArticles(){
-    this.showArticles = !this.showArticles;
-    this.userArticleService.getUserArticles(this.personSpec.id).subscribe(articleList => this.articles = articleList);
+    this.ngOnInit();
   }
 
   showCreateComponent(){
