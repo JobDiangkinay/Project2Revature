@@ -1,9 +1,9 @@
 <div *ngIf="!showSelArticle">
-    <div class="container userinfo">
+    <div class="container userinfo" style="background: #424242;">
         <div class="headeruser">
             <h3>List of Pending Articles</h3>
         </div>
-        <div style="background: #424242;">
+        <div style="background: #424242; padding-left: 3%;">
             <mat-form-field>
                 <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter" style="color: pink">
             </mat-form-field>
