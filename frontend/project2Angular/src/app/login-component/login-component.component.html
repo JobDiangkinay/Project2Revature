@@ -1,25 +1,25 @@
-<app-navbar></app-navbar>
 <div *ngIf="!showSignUp">
-<form [formGroup]="profileForm">
-    <table>
-        Login
-    <tr>
-        <td>Username:</td>
-        <td><input type="text" formControlName="UserName" #username></td>
-    </tr>
-    <tr> 
-        <td>Password:</td>
-        <td><input type="password" formControlName="Password" #password></td>
-    </tr>
-    <tr>
-        <input type="submit" value="Login" 
-        (click)="onClickSubmit(username.value,  password.value);redirectMethod()">
-    </tr>
-    </table>
-    <button pButton (click)="handleDisplaySignup()">To SignUp</button>
-</form>
+<app-navbar></app-navbar>
+<div class="card cardbody" >
+    <article class="card-body">
+    <a (click)="handleDisplaySignup()"class="float-right btn btn-outline-primary signupredirectbutton" >Sign up</a>
+    <h4 class="card-title mb-4 mt-1">Log in</h4>
+        <form [formGroup]="profileForm">
+        <div class="form-group">
+            <label>Your Username</label>
+            <input type="text" class="form-control" formControlName="UserName" placeholder="Username"#username>
+        </div> <!-- form-group// -->
+        <div class="form-group">
+            <label>Your password</label>
+            <input type="password" class="form-control" formControlName="Password" placeholder="******"#password>
+        </div> <!-- form-group// --> 
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block loginbutton" (click)="onClickSubmit(username.value,  password.value);redirectMethod()"> Login  </button>
+        </div> <!-- form-group// -->                                                           
+    </form>
+    </article>
+</div> <!-- card.// -->
 </div>
 <div *ngIf="showSignUp">
-<app-profile-editor (submit)="handleDisplaySignup()"></app-profile-editor>
-<button pButton (click)="handleDisplaySignup()">Back</button>
+    <app-profile-editor></app-profile-editor>
 </div>

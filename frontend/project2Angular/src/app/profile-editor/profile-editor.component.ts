@@ -14,6 +14,15 @@ import { throwMatDialogContentAlreadyAttachedError } from '@angular/material';
 })
 export class ProfileEditorComponent {
 	UsersName:User;
+	showUsernameError:boolean = false;
+	showPasswordError:boolean = false;
+	showFnameError:boolean = false;
+	showLnameError:boolean = false;
+	showPhoneError:boolean = false;
+	showPhoneError2:boolean = false;
+	showEmailError:boolean = false;
+	showEmailError2: boolean = false;
+	showLogIn:boolean = false;
 
   constructor(private ProfileEditorService: ProfileEditorService, private router: Router){}
 	updateInfo(formdata){
@@ -21,9 +30,11 @@ export class ProfileEditorComponent {
 		new Person(0,formdata.firstname,formdata.lastname,formdata.Phonenumber,formdata.Email));
 		this.ProfileEditorService.checkusername(formdata.Username)
 		.subscribe(username => {this.UsersName = username,this.insertUser(username,newUser)});
-		/*
-		this.ProfileEditorService.InsertUser(newUser).subscribe();
-		this.router.navigate(['./Login']);*/
+		this.showLogInPage();
+	}
+
+	showLogInPage(){
+		this.showLogIn = true;
 	}
 
 	insertUser(username:User, user:User){
@@ -31,21 +42,63 @@ export class ProfileEditorComponent {
 			this.ProfileEditorService.InsertUser(user).subscribe();
 		}
 	}
-
+	checkblankusername(formdata){
+			if(formdata.Username == "")
+			this.showUsernameError = true;
+			if(formdata.Username != "")
+			this.showUsernameError = false;
+	}
+	checkblankpassword(formdata){
+			if(formdata.Password == "")
+			this.showPasswordError = true;
+			if(formdata.Password != "")
+			this.showPasswordError = false;
+	}
+	checkblankfirstname(formdata){
+			if(formdata.firstname == "")
+			this.showFnameError = true;
+			if(formdata.firstname != "")
+			this.showFnameError = false;
+	}
+	checkblanklastname(formdata){
 	
-	/*	let Usersname = this.ProfileEditorService.checkusername(formdata.firstname);
-		console.log(Usersname);
-		if(Usersname == ""){
-			this.ProfileEditorService.InsertUser(newUser).subscribe();
+			if(formdata.lastname == "")
+			this.showLnameError = true;
+			if(formdata.lastname != "")
+			this.showLnameError = false;
+	}
+	checkphone(formdata){
+		if(formdata.Phonenumber == "")
+			this.showPhoneError = true;
+			if(formdata.Phonenumber != "")
+			this.showPhoneError = false;
+			
+		if(formdata.Phonenumber.length <10 || formdata.Phonenumber.length >15 )
+		this.showPhoneError2 = true;
+		if(formdata.Phonenumber.length >9 && formdata.Phonenumber.length <16 )
+		this.showPhoneError2 = false;
+	}
+	checkblankemail(formdata){
+		let atpos = formdata.Email.indexOf("@");
+        let dotpos = formdata.Email.lastIndexOf(".");
+         
+        if (atpos < 1) {
+			this.showEmailError2 = true;
 		}
-	*/	
-		//this.router.navigate(['./Login']);
+		else 
+			this.showEmailError2 = false;	
+		if(formdata.Email == "")
+			this.showEmailError = true;	
+			if(formdata.Email != "")
+			this.showEmailError = false;
 	}
 	
-		/*
-		redirectMethod(User:User,formdata){
-		if(formdata.Username != this.logInPerson.username){
-			this.router.navigate(['./User']);
+	checkPLength(formdata){
+		if(formdata.Password.length < 6 ){
+			this.showPasswordError = true;
 		}
-		this.router.navigate(['./Signup']);
-	}*/
+		else{
+			this.showPasswordError = false;
+		}
+	}
+}

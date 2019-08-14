@@ -1,31 +1,128 @@
+<div *ngIf="!showLogIn">
+<app-navbar></app-navbar>
+<div class="card cardbody">
+    <article class="card-body">
+    <a class="float-right btn btn-outline-primary loginredirectbutton" (click)="showLogInPage()">Login</a>
+    <h4 class="card-title mb-4 mt-1">Sign in</h4>
+        <form #SignupPerson="ngForm" (ngSubmit)="updateInfo(SignupPerson.value)">
+        <div class="form-group">
+            <label>Username</label>
+            <input type="String" class="form-control" placeholder="Username" name="Username" (blur)="checkblankusername(SignupPerson.value)"  ngModel required>
+            <div *ngIf="showUsernameError">
+                <label>Username cannot be empty</label>
+            </div>
+        </div> <!-- form-group// -->
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" input class="form-control" placeholder="******" name="Password" minlength="6" (blur)="checkPLength(SignupPerson.value)" ngModel required>
+            <div *ngIf="showPasswordError">
+                <label>Password must be 6 characters or more</label>
+            </div>
+        </div> <!-- form-group// -->
+        <div class = "form-group">
+        <label>Firstname: </label>
+            <input type="string" input class="form-control" placeholder="Firstname"name="firstname"ngModel (blur)="checkblankfirstname(SignupPerson.value)"required pattern="^[a-zA-Z0-9]+$">
+            <div *ngIf="showFnameError">
+                <td >Firstname cannot be empty</td>
+            </div>
+        </div>
+        <div class = "form-group">
+        <label>Lastname:</label> 
+        <input type="string" name="lastname" input class="form-control" placeholder="Lastname"ngModel (blur)="checkblanklastname(SignupPerson.value)"pattern="^[a-zA-Z0-9]+$" required >
+        <div *ngIf="showLnameError">
+            <td >Lastname cannot be empty</td>
+        </div>
+        </div>
+        <div class = "form-group">
+        <td>Phone Number: </td>
+        <input type="text" name="Phonenumber"input class="form-control" placeholder="5555555555" ngModel (blur)="checkphone(SignupPerson.value)"pattern="^[0-9]+$" required number minlength="10" maxlength="15">
+        <div *ngIf="showPhoneError">
+            <td>Phonenumber cannot be empty</td>
+        </div>
+        <div *ngIf="showPhoneError2">
+            <td>Phonenumber must be at least 10 numbers long</td>
+        </div>
+        </div>
+        <div class = "form-group">
+        <label>Email Address: </label>
+        <input type="email" input class="form-control" placeholder="Email@company.com"name="Email" maxlength="30" ngModel (blur)="checkblankemail(SignupPerson.value)"required email>
+        <div *ngIf="showEmailError">
+            <td>Email cannot be empty</td>
+        </div>
+        <div *ngIf="showEmailError2">
+            <td>Please input proper email</td>
+        </div> 
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block signupbutton" value="Signup"  [disabled]="!SignupPerson.valid"> Signup  </button>
+        </div> <!-- form-group// -->                                                           
+    </form>
+    </article>
+</div> 
+</div>
+<app-login-component *ngIf="showLogIn"></app-login-component>
+
+<!-- card.// -->
+    
+<!--
 <form #SignupPerson="ngForm" (ngSubmit)="updateInfo(SignupPerson.value)">
 Signup
-<!--    <form [formGroup]="profileForm">-->    
     <table>
         <tr>
             <td>Username: </td>
-            <td><input type="String" name="Username" maxlength="20" ngModel required></td>
+            <td><input type="String" name="Username" (blur)="checkblankusername(SignupPerson.value)"  ngModel required></td>
+            <div *ngIf="showUsernameError">
+                <td>Username cannot be empty</td>
+            </div>
         </tr>
+        
         <tr>
             <td>Password: </td>
-            <td><input type="password" name="Password" minlength="6" ngModel required ></td>
+            <td><input type="password" name="Password" minlength="6" (blur)="checkPLength(SignupPerson.value)" ngModel required ></td>
+            <div *ngIf="showPasswordError">
+                <td>Password must be 6 characters or more</td>
+            </div>
         </tr>
+        
         <tr>
             <td>Firstname: </td>
-            <td><input type="string" name="firstname"ngModel required ></td>
+            <td><input type="string" name="firstname"ngModel (blur)="checkblankfirstname(SignupPerson.value)"required pattern="^[a-zA-Z0-9]+$"></td>
+            <div *ngIf="showFnameError">
+                <td >Firstname cannot be empty</td>
+            </div>
         </tr>
+        
         <tr>
             <td>Lastname: </td>
-            <td><input type="string" name="lastname"ngModel required ></td>
+            <td><input type="string" name="lastname"ngModel (blur)="checkblanklastname(SignupPerson.value)"pattern="^[a-zA-Z0-9]+$" required ></td>
+            <div *ngIf="showLnameError">
+                <td >Lastname cannot be empty</td>
+            </div>
         </tr>
+        
         <tr>
             <td>Phone Number: </td>
-            <td><input type="text" name="Phonenumber" maxlength="10" ngModel required number minlength="10" maxlength="15"></td>
+            <td><input type="text" name="Phonenumber" ngModel (blur)="checkphone(SignupPerson.value)"pattern="^[0-9]+$" required number minlength="10" maxlength="15"></td>
+            <div *ngIf="showPhoneError">
+                <td>Phonenumber cannot be empty</td>
+            </div>
+            <div *ngIf="showPhoneError2">
+                <td>Phonenumber must be at least 10 numbers long</td>
+            </div>
         </tr>
+
         <tr>
             <td>Email Address: </td>
-            <td><input type="email" name="Email" maxlength="30" ngModel required email></td>
+            <td><input type="email" name="Email" maxlength="30" ngModel (blur)="checkblankemail(SignupPerson.value)"required email></td>
+            <div *ngIf="showEmailError">
+                <td>Email cannot be empty</td>
+            </div>
+            <div *ngIf="showEmailError2">
+                <td>Please input proper email</td>
+            </div>
         </tr>
+
         <tr><input type="submit" value="Signup"  [disabled]="!SignupPerson.valid"></tr>
     </table>
 </form>
+-->
