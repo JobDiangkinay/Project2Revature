@@ -120,5 +120,6 @@ public class UserController {
 		session.removeAttribute("username");
 		session.removeAttribute("usertype");
 		session.removeAttribute("personId");
+		
 	}
 }

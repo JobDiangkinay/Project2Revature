@@ -42,7 +42,7 @@ public class UserRepository {
 		
 		try {
 			@SuppressWarnings("unchecked")
-			Query<String> query = getSession().createQuery("SELECT username FROM User u WHERE u.username = :username");
+			Query<String> query = getSession().createQuery("SELECT u.username FROM User u WHERE u.username = :username");
 			return query.setParameter("username", username).getSingleResult();
 		}
 		catch(NoResultException e){

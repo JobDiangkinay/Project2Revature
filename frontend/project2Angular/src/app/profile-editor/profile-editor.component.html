@@ -1,6 +1,6 @@
 <form #SignupPerson="ngForm" (ngSubmit)="updateInfo(SignupPerson.value)">
-<app-navbar></app-navbar>
-<form [formGroup]="profileForm">    
+Signup
+<!--    <form [formGroup]="profileForm">-->    
     <table>
         <tr>
             <td>Username: </td>
@@ -20,12 +20,12 @@
         </tr>
         <tr>
             <td>Phone Number: </td>
-            <td><input type="String" name="Phonenumber" maxlength="10" ngModel required number minlength="10" maxlength="15"></td>
+            <td><input type="text" name="Phonenumber" maxlength="10" ngModel required number minlength="10" maxlength="15"></td>
         </tr>
         <tr>
             <td>Email Address: </td>
             <td><input type="email" name="Email" maxlength="30" ngModel required email></td>
         </tr>
-        <tr><input type="submit" value="Signup" [disabled]="!SignupPerson.valid"></tr>
+        <tr><input type="submit" value="Signup"  [disabled]="!SignupPerson.valid"></tr>
     </table>
 </form>

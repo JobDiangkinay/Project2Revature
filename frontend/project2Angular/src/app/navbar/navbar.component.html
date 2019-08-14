@@ -4,7 +4,8 @@
       <span class="menu-spacer"></span>
       <div>
         <a mat-button [routerLink]="'/User'" *ngIf="showAccountButton"> Account </a>
-        <a mat-button [routerLink]="'/Login'"> Login </a>
+        <a mat-button [routerLink]="'/Login'"*ngIf="!showAccountButton"> Login </a>
+        <a mat-button (click)="Logout()" *ngIf="showAccountButton"> Logout </a>
       </div>
     </mat-toolbar-row>
   </mat-toolbar>

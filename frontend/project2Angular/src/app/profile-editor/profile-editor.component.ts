@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { User } from './User';
 import { Person } from '../userinfo/person';
 import {Router} from '@angular/router';
+import { throwMatDialogContentAlreadyAttachedError } from '@angular/material';
 
 @Component({
 	selector: 'app-profile-editor',
@@ -12,22 +13,36 @@ import {Router} from '@angular/router';
 	styleUrls: ['./profile-editor.component.css']
 })
 export class ProfileEditorComponent {
+	Usersname:String;
 
   constructor(private ProfileEditorService: ProfileEditorService, private router: Router){}
 	updateInfo(formdata){
 		let newUser = new User(0,formdata.Username,"USER",formdata.Password, 
 		new Person(0,formdata.firstname,formdata.lastname,formdata.Phonenumber,formdata.Email));
+		this.ProfileEditorService.checkusername(formdata.firstname)
+		.subscribe(username => {this.Usersname = username,this.insertUser(username,newUser)});
+		/*
+		this.ProfileEditorService.InsertUser(newUser).subscribe();
+		this.router.navigate(['./Login']);*/
+	}
 
-	/*	
-		let Usersname = this.ProfileEditorService.checkusername(formdata.firstname);
+	insertUser(username:String, user:User){
+		console.log(username);
+		if(username == null){
+			this.ProfileEditorService.InsertUser(user).subscribe();
+		}
+	}
+
+	
+	/*	let Usersname = this.ProfileEditorService.checkusername(formdata.firstname);
 		console.log(Usersname);
 		if(Usersname == ""){
 			this.ProfileEditorService.InsertUser(newUser).subscribe();
 		}
-		this.ProfileEditorService.InsertUser(newUser).subscribe();
-		this.router.navigate(['./Login']);
+	*/	
+		//this.router.navigate(['./Login']);
 	}
-	*/
+	
 		/*
 		redirectMethod(User:User,formdata){
 		if(formdata.Username != this.logInPerson.username){
@@ -35,5 +50,3 @@ export class ProfileEditorComponent {
 		}
 		this.router.navigate(['./Signup']);
 	}*/
-}
-}
