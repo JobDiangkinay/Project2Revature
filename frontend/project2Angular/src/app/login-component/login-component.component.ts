@@ -32,7 +32,7 @@ export class LoginComponentComponent {
 	}
 
 	redirectMethod(person:User){
-		if(typeof person != "undefined"){
+		if(person != null){
 			this.router.navigate(['./User']);
 		}
 	}
