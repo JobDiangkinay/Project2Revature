@@ -1,8 +1,8 @@
-<div *ngIf="!showSelArticle"  style="background-color: lightgrey;">
-    <mat-tab-group>
+<div *ngIf="!showSelArticle" class="container outer" style="background-color: #424242;">
+    <mat-tab-group mat-align-tabs="center" mat-stretch-tabs >
             <mat-tab label="Science">
                 <ul class="Data">
-                    <li *ngFor="let article of scienceArticles" (click)=handleArticle(article)>
+                    <li class="articles"*ngFor="let article of scienceArticles" (click)=handleArticle(article)>
                         <!-- <a routerLink="/detail/{{article.id}}"> -->
                             <div>
                                 Title: {{article.title}}
@@ -13,15 +13,13 @@
                             <div>
                                 Date: {{article.date}}
                             </div>
-                            
                         <!-- </a> -->
-                        
                     </li>
                 </ul>
             </mat-tab>
             <mat-tab label="Technology">
                 <ul class="Data">
-                    <li *ngFor="let article of techArticles" (click)=handleArticle(article)>
+                    <li class="articles"*ngFor="let article of techArticles" (click)=handleArticle(article)>
                         <!-- <a routerLink="/detail/{{article.id}}"> -->
                             <div>
                                 Title: {{article.title}}
@@ -38,7 +36,7 @@
             </mat-tab>
             <mat-tab label="Mathematics">
                 <ul class="Data">
-                    <li *ngFor="let article of mathArticles" (click)=handleArticle(article)>
+                    <li class="articles"*ngFor="let article of mathArticles" (click)=handleArticle(article)>
                         <!-- <a routerLink="/detail/{{article.id}}"> -->
                             <div>
                                 Title: {{article.title}}

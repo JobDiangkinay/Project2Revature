@@ -1,14 +1,16 @@
-<div *ngIf="!showArticleDetail">
-    <div *ngIf="currentArticle">
-        <h2>Title: {{currentArticle.title}}</h2>
+<div *ngIf="!showArticleDetail" >
+    <div *ngIf="currentArticle"class="viewarticle"style="text-align: center">
+        <div class="headeruser">
+            <h2>Title: {{currentArticle.title}}</h2>
+        </div>
         <div>Author: {{currentArticle.person.firstName}} {{currentArticle.person.lastName}}</div>
         <div>Category: {{currentArticle.category}} </div>
         <div>Date: {{currentArticle.date}}</div>
         <br>
-        <div>
+        <div class="article-content">
             {{currentArticle.articleContent}}
         </div>
-        <span><button (click)="handleBackButton()">Back</button></span>
+        <span><button class="btn btn-primary clrBtn"(click)="handleBackButton()">Back</button></span>
     </div>
 </div>
 <app-article-view *ngIf="showArticleDetail"></app-article-view>

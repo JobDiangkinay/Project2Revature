@@ -1,9 +1,26 @@
 .Data {
-    margin: 0 0 2em 0;
+    margin: 0 0 1em 0;
     list-style-type: none;
     padding: 0;
-    width: 35em;
   }
+  .outer{border-radius: 20px;
+    border-style: groove;
+    padding-top: 1.5%;
+    padding-bottom: 1.5%;
+    margin-top: 2%;}
+  .body{
+    background: #424242 !important
+  }
+  .articles{
+    margin: 1% 5%;
+    border-style: groove;
+    border-radius: 10px;
+    padding: 10px;
+    background: #696969 !important;
+    color: white;
+    margin-left: auto;
+    width: 90%;
+    margin-left: auto;  }
   .Data li {
     cursor: pointer;
     position: relative;
@@ -12,11 +29,11 @@
     margin-bottom:.7em;
     
     padding: .3em 0;
-    height: 3.5em;
+    height: 5em;
     border-radius: 7px;
   }
   .Data li:hover {
-    color: #607D8B;
+    color: pink;
     background-color: #DDD;
     left: .1em;
   }
@@ -31,4 +48,8 @@
 
   .tab-background{
     background-color: red !important;
+  }
+
+  mat-tab{
+    width: 33% !important;
   }
