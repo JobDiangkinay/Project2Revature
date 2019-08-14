@@ -14,7 +14,8 @@ import { Router } from '@angular/router';
 export class LoginComponentComponent {
 	logInPerson: User;
 	location: Location;
-
+	showSignUp:boolean = false;
+	
 	constructor(private LoginComponentService: LoginComponentService, private router: Router) { }
 
 	profileForm = new FormGroup({
@@ -22,13 +23,16 @@ export class LoginComponentComponent {
 		Password: new FormControl(''),
 	});
 	onClickSubmit(UserName, Password) {
-		username: UserName;
-		password: Password;
-		this.LoginComponentService.LoginUser(UserName, Password).subscribe(person => { this.logInPerson = person, this.redirectMethod(person) });
+		this.LoginComponentService.LoginUser(UserName, Password).subscribe(person => { this.logInPerson = person, this.redirectMethod(person)});
+		//this.redirectMethod();
+	}
+	
+	handleDisplaySignup(){
+		this.showSignUp = !this.showSignUp;
 	}
 
-	redirectMethod(person: User) {
-		if (typeof person != "undefined") {
+	redirectMethod(person:User){
+		if(typeof person != "undefined"){
 			this.router.navigate(['./User']);
 		}
 	}

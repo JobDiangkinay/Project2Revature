@@ -1,0 +1,24 @@
+.userinfo{
+    border-radius: 10px;
+    border-style: groove;
+    padding-top: 1.5%;
+    padding-bottom: 1.5%;
+    margin-top: 2%;
+}
+
+.headeruser{
+    border-color: #c2185b;
+    border-style: groove;
+    background-color: #c2185b;
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    padding: 2px;
+}
+
+.clrBtn{
+    background: #c2185b;
+    border-color: #c2185b;
+    margin: 5px;
+    width: 75px;
+}

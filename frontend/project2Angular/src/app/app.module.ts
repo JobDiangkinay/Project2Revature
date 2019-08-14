@@ -18,6 +18,10 @@ import { AppmainComponent } from './appmain/appmain.component';
 import { PendingArticleComponent } from './pending-article/pending-article.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ArticleDetailComponent } from './article-detail/article-detail.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatInputModule } from '@angular/material';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +48,11 @@ import { ArticleDetailComponent } from './article-detail/article-detail.componen
     MatListModule,
     MatButtonModule,
     MatIconModule,
-    MatTabsModule
+    MatTabsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

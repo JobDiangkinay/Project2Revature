@@ -1,4 +1,5 @@
 <app-navbar></app-navbar>
+<div *ngIf="!showSignUp">
 <form [formGroup]="profileForm">
     <table>
         Login
@@ -15,4 +16,10 @@
         (click)="onClickSubmit(username.value,  password.value);redirectMethod()">
     </tr>
     </table>
+    <button pButton (click)="handleDisplaySignup()">To SignUp</button>
 </form>
+</div>
+<div *ngIf="showSignUp">
+<app-profile-editor (submit)="handleDisplaySignup()"></app-profile-editor>
+<button pButton (click)="handleDisplaySignup()">Back</button>
+</div>

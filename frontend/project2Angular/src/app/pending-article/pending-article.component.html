@@ -1,17 +1,24 @@
 <div *ngIf="!showEditorPanel">
-    <div *ngIf="currentPendingArticle">
-        <h2>Title: {{currentPendingArticle.title}} </h2>
-        <div>Author: {{currentPendingArticle.person.firstName}} {{currentPendingArticle.person.lastName}}</div>
-        <div>Category: {{currentPendingArticle.category}} </div>
-        <div>Date: {{currentPendingArticle.date}}</div>
+    <div *ngIf="currentPendingArticle" class="container userinfo">
+        <div class="headeruser">
+            <h3>{{currentPendingArticle.title}} </h3>
+        </div>
+        <br />
+        <div style="text-align: center">
+            <div>Author: {{currentPendingArticle.person.firstName}} {{currentPendingArticle.person.lastName}}</div>
+            <div>Category: {{currentPendingArticle.category}} </div>
+            <div>Date: {{currentPendingArticle.date}}</div>
+        </div>
         <br />
         <div>
             {{currentPendingArticle.articleContent}}
         </div>
         <br />
-        <span><button (click)="updateArticleStatus(true)">Accept</button></span>
-        <span><button (click)="updateArticleStatus(false)">Deny</button></span>
-        <span><button (click)="handleBackButton()">Back</button></span>
+        <div style="margin-left: 39%">
+            <span><button class="btn btn-primary clrBtn" (click)="updateArticleStatus(true)">Accept</button></span>
+            <span><button class="btn btn-primary clrBtn" (click)="updateArticleStatus(false)">Deny</button></span>
+            <span><button class="btn btn-primary clrBtn" (click)="handleBackButton()">Back</button></span>
+        </div>
     </div>
 </div>
 <app-editor-handle-article *ngIf="showEditorPanel"></app-editor-handle-article>

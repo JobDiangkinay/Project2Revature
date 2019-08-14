@@ -3,6 +3,7 @@ package com.revature.data;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 
 import org.hibernate.Session;
 import org.hibernate.query.Query;
@@ -36,4 +37,16 @@ public class UserRepository {
         getSession().save("User", user);
         return user;
     }
+
+	public String getUsername(String username) {
+		
+		try {
+			@SuppressWarnings("unchecked")
+			Query<String> query = getSession().createQuery("SELECT u.username FROM User u WHERE u.username = :username");
+			return query.setParameter("username", username).getSingleResult();
+		}
+		catch(NoResultException e){
+			return null;
+			}
+	}
 }
