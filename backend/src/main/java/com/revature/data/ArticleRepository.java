@@ -58,11 +58,40 @@ public class ArticleRepository {
 		return updateArticle;
 	}
 	
+	public Article getArticleById(int id) {
+		Query<Article> query = getSession().createQuery("SELECT c FROM Article c WHERE c.id = :id",Article.class);
+		return query.setParameter("id", id).getSingleResult();
+	}
+	
 	public List<Article> getAllPendingArticles() {
 		String pending = "pending";
 		Query<Article> query = getSession().createQuery(
 		        "SELECT c FROM Article c WHERE c.articleStatus = :pending", Article.class);
 		    return query.setParameter("pending", pending).list();
+	}
+	
+	public List<Article> getScienceArticles(){
+		String hql = "From Article a WHERE a.category = :category and a.articleStatus = :status";
+		Query<Article> query = getSession().createQuery(hql,Article.class);
+		query.setParameter("category", "Science");
+		query.setParameter("status", "approved");
+		return query.list();
+	}
+	
+	public List<Article> getTechArticles(){
+		String hql = "From Article a WHERE a.category = :category and a.articleStatus = :status";
+		Query<Article> query = getSession().createQuery(hql,Article.class);
+		query.setParameter("category", "Technology");
+		query.setParameter("status", "approved");
+		return query.list();
+	}
+	
+	public List<Article> getMathArticles(){
+		String hql = "From Article a WHERE a.category = :category and a.articleStatus = :status";
+		Query<Article> query = getSession().createQuery(hql,Article.class);
+		query.setParameter("category", "Mathematics");
+		query.setParameter("status", "approved");
+		return query.list();
 	}
 	
 //	public int[] savedArray(int personId) {

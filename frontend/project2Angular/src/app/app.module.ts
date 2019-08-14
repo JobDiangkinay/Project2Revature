@@ -17,6 +17,7 @@ import { ArticleViewComponent } from './article-view/article-view.component';
 import { AppmainComponent } from './appmain/appmain.component';
 import { PendingArticleComponent } from './pending-article/pending-article.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { ArticleDetailComponent } from './article-detail/article-detail.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +29,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     EditorHandleArticleComponent,
     ArticleViewComponent,
     AppmainComponent,
-    PendingArticleComponent
+    PendingArticleComponent,
+    ArticleDetailComponent
   ],
   imports: [
     BrowserModule,

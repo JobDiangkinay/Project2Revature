@@ -35,15 +35,14 @@ public class ArticleController {
         return getArticleRepository().getAllArticles();
     }
 	
-//	@GetMapping("/userarticle/{id}")
-//	public List<Article> getUserArticles(@PathVariable Integer id){
-//		return getArticleRepository().getUserArticles(id);
-//	}
+	@GetMapping("/{id}")
+	public Article getUserArticles(@PathVariable Integer id){
+		return getArticleRepository().getArticleById(id);
+	}
 	
 	@GetMapping("/userarticle/")
 	public List<Article> getUserArticles(HttpSession session){
 		int personId = (int)session.getAttribute("personId");
-		System.out.println("This is "+personId);
 		return getArticleRepository().getUserArticles(personId);
 	}
 	
@@ -53,6 +52,21 @@ public class ArticleController {
 //		return getArticleRepository().getSavedArticles(personId);
 //	}
  
+	@GetMapping("/science")
+	public List<Article> getScienceArticles(){
+		return getArticleRepository().getScienceArticles();
+	}
+	
+	@GetMapping("/tech")
+	public List<Article> getTechArticles(){
+		return getArticleRepository().getTechArticles();
+	}
+	
+	@GetMapping("/math")
+	public List<Article> getMathArticles(){
+		return getArticleRepository().getMathArticles();
+	}
+	
 	@PostMapping("/")
     public Article postArticle(@RequestBody Article article) {
         return getArticleRepository().postArticle(article);
