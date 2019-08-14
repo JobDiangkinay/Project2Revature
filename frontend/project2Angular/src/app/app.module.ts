@@ -17,6 +17,7 @@ import { ArticleViewComponent } from './article-view/article-view.component';
 import { AppmainComponent } from './appmain/appmain.component';
 import { PendingArticleComponent } from './pending-article/pending-article.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { ArticleDetailComponent } from './article-detail/article-detail.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
@@ -32,7 +33,8 @@ import { MatInputModule } from '@angular/material';
     EditorHandleArticleComponent,
     ArticleViewComponent,
     AppmainComponent,
-    PendingArticleComponent
+    PendingArticleComponent,
+    ArticleDetailComponent
   ],
   imports: [
     BrowserModule,

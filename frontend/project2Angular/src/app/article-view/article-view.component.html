@@ -1,11 +1,59 @@
-<mat-tab-group>
-    <mat-tab label="Science">
-        Content 1
-    </mat-tab>
-    <mat-tab label="Technology">
-        Content 1
-    </mat-tab>
-    <mat-tab label="Mathematics">
-        Content 1
-    </mat-tab>
-</mat-tab-group>
+<div *ngIf="!showSelArticle"  style="background-color: lightgrey;">
+    <mat-tab-group>
+            <mat-tab label="Science">
+                <ul class="Data">
+                    <li *ngFor="let article of scienceArticles" (click)=handleArticle(article)>
+                        <!-- <a routerLink="/detail/{{article.id}}"> -->
+                            <div>
+                                Title: {{article.title}}
+                            </div>
+                            <div>
+                                Author: {{article.person.firstName}} {{article.person.lastName}}
+                            </div>
+                            <div>
+                                Date: {{article.date}}
+                            </div>
+                            
+                        <!-- </a> -->
+                        
+                    </li>
+                </ul>
+            </mat-tab>
+            <mat-tab label="Technology">
+                <ul class="Data">
+                    <li *ngFor="let article of techArticles" (click)=handleArticle(article)>
+                        <!-- <a routerLink="/detail/{{article.id}}"> -->
+                            <div>
+                                Title: {{article.title}}
+                            </div>
+                            <div>
+                                Author: {{article.person.firstName}} {{article.person.lastName}}
+                            </div>
+                            <div>
+                                Date: {{article.date}}
+                            </div>
+                        <!-- </a> -->
+                    </li>
+                </ul>
+            </mat-tab>
+            <mat-tab label="Mathematics">
+                <ul class="Data">
+                    <li *ngFor="let article of mathArticles" (click)=handleArticle(article)>
+                        <!-- <a routerLink="/detail/{{article.id}}"> -->
+                            <div>
+                                Title: {{article.title}}
+                            </div>
+                            <div>
+                                Author: {{article.person.firstName}} {{article.person.lastName}}
+                            </div>
+                            <div>
+                                Date: {{article.date}}
+                            </div>
+                        <!-- </a> -->
+                    </li>
+                </ul>
+            </mat-tab>
+        </mat-tab-group>
+</div>
+
+<app-article-detail [selectArticle]="selArticle" *ngIf="showSelArticle"></app-article-detail>

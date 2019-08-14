@@ -1,0 +1,34 @@
+.Data {
+    margin: 0 0 2em 0;
+    list-style-type: none;
+    padding: 0;
+    width: 35em;
+  }
+  .Data li {
+    cursor: pointer;
+    position: relative;
+    left: 0;
+    background-color: #EEE;
+    margin-bottom:.7em;
+    
+    padding: .3em 0;
+    height: 3.5em;
+    border-radius: 7px;
+  }
+  .Data li:hover {
+    color: #607D8B;
+    background-color: #DDD;
+    left: .1em;
+  }
+  .Data li.selected {
+    background-color: #CFD8DC;
+    color: white;
+  }
+  .Data li.selected:hover {
+    background-color: #BBD8DC;
+    color: white;
+  }
+
+  .tab-background{
+    background-color: red !important;
+  }

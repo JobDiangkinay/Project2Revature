@@ -1,35 +1,52 @@
-<div class="container userinfo">
+<div class="container userinfo" style="background: #424242;">
     <div class="headeruser">
         <h3>List of User's Articles</h3>
     </div>
     <div>
-        <table class="table">
-            <tr>
-                <th>Title</th>
-                <th>Date Created</th>
-                <th>Category</th>
-                <th>Article's Status</th>
-            </tr>
-            <tr *ngFor="let article of userArticles">
-                <td>{{article.title}}</td>
-                <td>{{article.date}}</td>
-                <td>{{article.category}}</td>
-                <td>{{article.articleStatus}}</td>
-            </tr>
+        <div style="background: #424242; padding-left: 3%;">
+            <mat-form-field>
+                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter" style="color: pink">
+            </mat-form-field>
+        </div>
+        <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+                <td mat-cell *matCellDef="let element" (click)="handleSpecArticle(element)"> {{element.id}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="date">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+                <td mat-cell *matCellDef="let element" (click)="handleSpecArticle(element)"> {{element.date}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="category">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Category </th>
+                <td mat-cell *matCellDef="let element" (click)="handleSpecArticle(element)"> {{element.category}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+                <td mat-cell *matCellDef="let element" (click)="handleSpecArticle(element)"> {{element.articleStatus}}
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
     </div>
 
-
-
-    <button (click)="showCreateComponent()">Create New Article</button>
+    <button (click)="showCreateComponent()" class="btn btn-primary clrBtn">Create New Article</button>
 
     <div>
-        <div *ngIf="showCreate">
-            <h3>Create New Article</h3>
+        <div *ngIf="showCreate" style="color:white;">
+            <h3 style="text-align: center;">Create New Article</h3>
+            <div class="container">
             <form #newArticle="ngForm" (ngSubmit)="createArticle(newArticle.value)">
                 <table>
                     <tr>
-                        <td>Category</td>
+                        <td >Category</td>
                         <td>
                             <select name="category" ngModel>
                                 <option value="Science" selected>Science</option>
@@ -46,9 +63,10 @@
                         <td>Content</td>
                         <td><input type="text" name="newContent" ngModel></td>
                     </tr>
-                    <tr><input type="submit" value="Submit Article" [disabled]="!newArticle.valid"></tr>
+                    <tr><input type="submit" value="Submit Article" [disabled]="!newArticle.valid" class="btn btn-primary clrBtn"></tr>
                 </table>
             </form>
+        </div>
         </div>
     </div>
 </div>
