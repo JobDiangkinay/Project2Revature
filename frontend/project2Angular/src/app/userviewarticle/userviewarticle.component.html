@@ -1,0 +1,22 @@
+<div *ngIf="!showEditorPanel">
+        <div *ngIf="currentSelectedArticle" class="container userinfo" style="background: #424242; color:white;">
+            <div class="headeruser">
+                <h3>{{currentSelectedArticle.title}} </h3>
+            </div>
+            <br />
+            <div style="text-align: center">
+                <div>Author: {{currentSelectedArticle.person.firstName}} {{currentSelectedArticle.person.lastName}}</div>
+                <div>Category: {{currentSelectedArticle.category}} </div>
+                <div>Date: {{currentSelectedArticle.date}}</div>
+            </div>
+            <br />
+            <div class="article-content">
+                {{currentSelectedArticle.articleContent}}
+            </div>
+            <br />
+            <div style="margin-left: 45%">
+                <span><button class="btn btn-primary clrBtn" (click)="handleBackButton()">Back</button></span>
+            </div>
+        </div>
+    </div>
+    <app-userarticle *ngIf="showEditorPanel"></app-userarticle>

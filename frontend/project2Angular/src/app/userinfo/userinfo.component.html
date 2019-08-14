@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
-<div class="container userinfo">
-    <div *ngIf="showUserInfo">
+<div class="container userinfo" style="background: #424242;">
+    <div *ngIf="showUserInfo" style="color: white;">
         <div class="headeruser">
             <h3>User Information</h3>
         </div>
@@ -23,7 +23,7 @@
         </table>
 
     </div>
-    <div *ngIf="showUpdate" style="padding-top: 1%">
+    <div *ngIf="showUpdate" style="padding-top: 1%;color: white;">
         <h4>Update Information</h4>
         <form #updatePerson="ngForm" (ngSubmit)="updateInfo(updatePerson.value)">
             <table>

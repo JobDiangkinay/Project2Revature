@@ -26,6 +26,10 @@ export class EditorHandleArticleComponent implements OnInit {
     this.editorHandleArticleService.getPendingArticles().subscribe(articles => { this.pendingArticleTry = articles, this.pendingArticlesDataSource(articles) });
   }
 
+  refreshButton(){
+    this.editorHandleArticleService.getPendingArticles().subscribe(articles => { this.pendingArticleTry = articles, this.pendingArticlesDataSource(articles) });
+  }
+
   pendingArticlesDataSource(articles: Article[]) {
     this.dataSource = new MatTableDataSource<Article>(articles);
     this.dataSource.paginator = this.paginator;

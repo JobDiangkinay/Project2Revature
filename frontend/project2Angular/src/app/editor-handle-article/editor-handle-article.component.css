@@ -19,3 +19,8 @@
 table {
     width: 100%;
   }
+
+.linkClick{
+    margin-left: 1%;
+    color: #c2185b;
+}

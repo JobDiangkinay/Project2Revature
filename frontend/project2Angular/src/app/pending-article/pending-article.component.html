@@ -1,5 +1,5 @@
 <div *ngIf="!showEditorPanel">
-    <div *ngIf="currentPendingArticle" class="container userinfo">
+    <div *ngIf="currentPendingArticle" class="container userinfo" style="background: #424242; color:white;">
         <div class="headeruser">
             <h3>{{currentPendingArticle.title}} </h3>
         </div>
@@ -10,7 +10,7 @@
             <div>Date: {{currentPendingArticle.date}}</div>
         </div>
         <br />
-        <div>
+        <div class="article-content">
             {{currentPendingArticle.articleContent}}
         </div>
         <br />

@@ -1,4 +1,4 @@
-<div class="container userinfo" style="background: #424242;">
+<div class="container userinfo" style="background: #424242;" *ngIf="!showSelArticle">
     <div class="headeruser">
         <h3>List of User's Articles</h3>
     </div>
@@ -18,6 +18,11 @@
             <ng-container matColumnDef="date">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
                 <td mat-cell *matCellDef="let element" (click)="handleSpecArticle(element)"> {{element.date}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="title">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Title </th>
+                <td mat-cell *matCellDef="let element" (click)="handleSpecArticle(element)"> {{element.title}} </td>
             </ng-container>
 
             <ng-container matColumnDef="category">
@@ -41,32 +46,37 @@
 
     <div>
         <div *ngIf="showCreate" style="color:white;">
-            <h3 style="text-align: center;">Create New Article</h3>
-            <div class="container">
-            <form #newArticle="ngForm" (ngSubmit)="createArticle(newArticle.value)">
-                <table>
-                    <tr>
-                        <td >Category</td>
-                        <td>
+            <h3>Create New Article</h3>
+            <div>
+                <form #newArticle="ngForm" (ngSubmit)="createArticle(newArticle.value)">
+                    <table>
+                        <tr>
+                            Category:
+
                             <select name="category" ngModel>
                                 <option value="Science" selected>Science</option>
                                 <option value="Technology">Technology</option>
                                 <option value="Mathematics">Mathematics</option>
                             </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Title</td>
-                        <td><input type="text" name="newTitle" maxlength="30" ngModel></td>
-                    </tr>
-                    <tr>
-                        <td>Content</td>
-                        <td><input type="text" name="newContent" ngModel></td>
-                    </tr>
-                    <tr><input type="submit" value="Submit Article" [disabled]="!newArticle.valid" class="btn btn-primary clrBtn"></tr>
-                </table>
-            </form>
-        </div>
+
+                        </tr>
+                        <tr>
+                            <label style="padding-right: 3.3%;">Title:</label>
+                            <input type="text" name="newTitle" maxlength="30" ngModel>
+                        </tr>
+                        <tr>
+                            Content
+                        </tr>
+                        <tr>
+                            <textarea class="boxsizingBorder" type="text" name="newContent" style="width: 100%;"
+                                ngModel></textarea>
+                        </tr>
+                        <tr><input type="submit" value="Submit Article" [disabled]="!newArticle.valid"
+                                class="btn btn-primary clrBtn"></tr>
+                    </table>
+                </form>
+            </div>
         </div>
     </div>
 </div>
+<app-userviewarticle [selectArticle]="selArticle" *ngIf="showSelArticle"></app-userviewarticle>

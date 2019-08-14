@@ -18,8 +18,10 @@ export class UserarticleComponent implements OnInit {
   showCreate: boolean = false;
   newArticle: Article;
   personSpec: Person;
+  selArticle: Article;
+  showSelArticle: boolean = false;
   
-  displayedColumns: string[] = ['id', 'date', 'category', 'status'];
+  displayedColumns: string[] = ['id', 'date','title', 'category', 'status'];
   dataSource;
   @ViewChild(MatPaginator,{static: false}) paginator: MatPaginator;
   @ViewChild(MatSort,{static: false}) sort: MatSort;
@@ -49,7 +51,7 @@ export class UserarticleComponent implements OnInit {
   }
 
   createArticle(formData){
-    let newArticle = new Article(0,formData.newTitle,formData.newContent,this.getDate(),formData.category,"Pending",this.personSpec);
+    let newArticle = new Article(0,formData.newTitle,formData.newContent,this.getDate(),formData.category,"pending",this.personSpec);
     this.userArticleService.createArticle(newArticle).subscribe(article => this.ngOnInit());
     this.showCreate = false;
     this.ngOnInit();
@@ -57,6 +59,11 @@ export class UserarticleComponent implements OnInit {
 
   showCreateComponent(){
     this.showCreate = !this.showCreate;
+  }
+
+  handleSpecArticle(curArticle: Article) {
+    this.selArticle = curArticle;
+    this.showSelArticle = true;
   }
 
   getDate(){

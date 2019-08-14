@@ -22,6 +22,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatInputModule } from '@angular/material';
+import { UserviewarticleComponent } from './userviewarticle/userviewarticle.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,8 @@ import { MatInputModule } from '@angular/material';
     ArticleViewComponent,
     AppmainComponent,
     PendingArticleComponent,
-    ArticleDetailComponent
+    ArticleDetailComponent,
+    UserviewarticleComponent
   ],
   imports: [
     BrowserModule,
