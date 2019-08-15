@@ -7,7 +7,7 @@
         <form #SignupPerson="ngForm" (ngSubmit)="updateInfo(SignupPerson.value)">
         <div class="form-group">
             <label>Username</label>
-            <input type="String" class="form-control" placeholder="Username" name="Username" (blur)="checkblankusername(SignupPerson.value)"  ngModel required>
+            <input type="String" class="form-control" placeholder="Username" name="Username"  (blur)="checkblankusername(SignupPerson.value)"  ngModel required>
             <div *ngIf="showUsernameError" class="error">
                 <label>Username cannot be empty</label>
             </div>

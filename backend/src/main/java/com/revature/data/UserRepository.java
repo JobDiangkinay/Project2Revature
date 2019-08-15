@@ -26,8 +26,15 @@ public class UserRepository {
     }
 	
 	public User getUser(String Username) {
+	try {
 		Query<User> query = getSession().createQuery("SELECT u FROM User u WHERE u.username = :username", User.class);
 		return query.setParameter("username", Username).getSingleResult();
+	}
+		catch(NoResultException e){
+			User error = new User(0, "empty", "empty", new Person(0, "empty","empty", "empty", "empty"), "empty");
+			return error;
+			}
+	
 	}
 	public List<User> getAllUsers() {
         return getSession().createQuery("from User", User.class).list();
@@ -43,7 +50,6 @@ public class UserRepository {
 			Query<User> query = getSession().createQuery("SELECT u FROM User u WHERE u.username = :username", User.class);
 			return query.setParameter("username", username).getSingleResult();
 		}
-		
 		catch(NoResultException e){
 			return null;
 			}
