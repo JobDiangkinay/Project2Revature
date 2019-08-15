@@ -9,10 +9,10 @@ import { User } from '../login-component/User';
 })
 export class UserinfoService {
 
-  private personUrl = 'http://localhost:8080/persons/';
-  private updatePersonUrl = 'http://localhost:8080/persons/update';
-  private currentPersonUrl = 'http://localhost:8080/persons/currentUser';
-  private currentUserUrl = 'http://localhost:8080/users/currentUserType';
+  private personUrl = 'http://mysterice.us-east-2.elasticbeanstalk.com/persons/';
+  private updatePersonUrl = 'http://mysterice.us-east-2.elasticbeanstalk.com/persons/update/';
+  private currentPersonUrl = 'http://mysterice.us-east-2.elasticbeanstalk.com/persons/currentUser/';
+  private currentUserUrl = 'http://mysterice.us-east-2.elasticbeanstalk.com/users/currentUserType/';
   constructor(private httpClient:HttpClient) { }
 
   getPersons(): Observable<Person[]> {
@@ -30,7 +30,7 @@ export class UserinfoService {
 
   getCurrentPerson(): Observable<Person>{
     const url = `${this.personUrl}/currentUser`;
-    return this.httpClient.get<Person>('http://localhost:8080/persons/currentUser');
+    return this.httpClient.get<Person>('http://mysterice.us-east-2.elasticbeanstalk.com/persons/currentUser');
   }
 
   updatePersonInfo(person: Person): Observable<Person>{

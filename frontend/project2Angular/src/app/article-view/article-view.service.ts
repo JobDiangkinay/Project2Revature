@@ -8,9 +8,9 @@ import { Article} from '../userarticle/article';
 })
 export class ArticleViewService {
 
-  private scienceUrl = 'http://localhost:8080/articles/science';
-  private techUrl ='http://localhost:8080/articles/tech';
-  private mathUrl ='http://localhost:8080/articles/math';
+  private scienceUrl = 'http://mysterice.us-east-2.elasticbeanstalk.com/articles/science/';
+  private techUrl ='http://mysterice.us-east-2.elasticbeanstalk.com/articles/tech/';
+  private mathUrl ='http://mysterice.us-east-2.elasticbeanstalk.com/articles/math/';
 
   constructor(private httpClient: HttpClient) { }
 

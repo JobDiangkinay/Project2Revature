@@ -8,7 +8,7 @@ import { Article} from '../userarticle/article';
 })
 export class ArticleDetailService {
 
-  private articleUrl = 'http://localhost:8080/articles/';
+  private articleUrl = 'http://mysterice.us-east-2.elasticbeanstalk.com/articles/';
 
   constructor(private httpClient: HttpClient) { }
 
