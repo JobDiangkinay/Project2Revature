@@ -6,7 +6,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class NavbarService {
-  private logoutUrl = 'http://localhost:8080/users/logout';
+  private logoutUrl = 'http://mysterice.us-east-2.elasticbeanstalk.com/users/logout/';
  
   constructor(private httpClient:HttpClient) { }
   

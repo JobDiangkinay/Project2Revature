@@ -8,7 +8,7 @@ import { User } from './User';
 })
 export class ProfileEditorService {
 
-  private signUpUrl = 'http://localhost:8080/users/';
+  private signUpUrl = 'http://mysterice.us-east-2.elasticbeanstalk.com/users/';
   constructor(private httpClient:HttpClient) {
     
    }

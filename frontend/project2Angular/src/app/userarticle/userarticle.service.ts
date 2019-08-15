@@ -9,9 +9,9 @@ import { Person } from '../userinfo/person';
 })
 export class UserarticleService {
 
-  private articleUrl = 'http://localhost:8080/articles/';
-  private userArticlesUrl = 'http://localhost:8080/articles/userarticle/';
-  private savedArticleUrl = 'http://localhost:8080/articles/savedarticle/';
+  private articleUrl = 'http://mysterice.us-east-2.elasticbeanstalk.com/articles/';
+  private userArticlesUrl = 'http://mysterice.us-east-2.elasticbeanstalk.com/articles/userarticle/';
+  private savedArticleUrl = 'http://mysterice.us-east-2.elasticbeanstalk.com/articles/savedarticle/';
 
   constructor(private httpClient:HttpClient) { }
 

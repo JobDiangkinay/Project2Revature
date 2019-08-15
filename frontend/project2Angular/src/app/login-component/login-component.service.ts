@@ -6,7 +6,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class LoginComponentService {
-  private loginUrl = 'http://localhost:8080/users/login';
+  private loginUrl = 'http://mysterice.us-east-2.elasticbeanstalk.com/users/login/';
   constructor(private httpClient:HttpClient) { }
 /*
   LoginUser(): Observable<User>{
