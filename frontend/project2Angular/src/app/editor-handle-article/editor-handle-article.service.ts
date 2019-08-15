@@ -8,7 +8,7 @@ import {Article} from "../userarticle/article";
 })
 export class EditorHandleArticleService {
 
-  private pendingArticleUrl = 'http://localhost:8080/articles/pending';
+  private pendingArticleUrl = 'http://mysterice.us-east-2.elasticbeanstalk.com/articles/pending/';
 
   constructor(private httpClient:HttpClient) { }
   getPendingArticles(){
