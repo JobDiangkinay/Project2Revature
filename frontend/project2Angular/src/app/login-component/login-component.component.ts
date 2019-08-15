@@ -15,7 +15,7 @@ export class LoginComponentComponent {
 	logInPerson: User;
 	location: Location;
 	showSignUp:boolean = false;
-	
+	showLoginError:boolean = false;
 	constructor(private LoginComponentService: LoginComponentService, private router: Router) { }
 
 	profileForm = new FormGroup({
@@ -24,7 +24,6 @@ export class LoginComponentComponent {
 	});
 	onClickSubmit(UserName, Password) {
 		this.LoginComponentService.LoginUser(UserName, Password).subscribe(person => { this.logInPerson = person, this.redirectMethod(person)});
-		//this.redirectMethod();
 	}
 	
 	handleDisplaySignup(){
@@ -33,7 +32,10 @@ export class LoginComponentComponent {
 
 	redirectMethod(person:User){
 		if(person != null){
+			this.showLoginError = false;
 			this.router.navigate(['./User']);
 		}
+		else
+		this.showLoginError = true;
 	}
 }

@@ -18,8 +18,6 @@ personCheck:Person;
   }
   Logout(){
     this.NavbarService.UserLogout().subscribe();
-    this.router.navigate(['./']);
-
   }
 
   handleAccountButton(person:Person){
