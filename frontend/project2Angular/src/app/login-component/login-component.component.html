@@ -1,5 +1,9 @@
 <div *ngIf="!showSignUp">
 <app-navbar></app-navbar>
+
+<div class="alert alert-danger" *ngIf="showLoginError" role="alert">
+        There does not exist an account with these Login credentials!
+</div>
 <div class="card cardbody" >
     <article class="card-body">
     <a (click)="handleDisplaySignup()"class="float-right btn btn-outline-primary signupredirectbutton" >Sign up</a>

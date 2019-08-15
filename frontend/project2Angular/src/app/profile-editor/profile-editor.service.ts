@@ -18,7 +18,6 @@ export class ProfileEditorService {
     return this.httpClient.post<User>(this.signUpUrl, User);
   }
   checkusername(username: string): Observable<User>{
-    
     const url = `${this.signUpUrl}${username}`;
     return this.httpClient.get<User>(url);
   }

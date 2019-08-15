@@ -1,5 +1,5 @@
 import { Component, SystemJsNgModuleLoader } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, NgForm } from '@angular/forms';
 import { ProfileEditorService} from './profile-editor.service';
 import { Observable } from 'rxjs';
 import { User } from './User';
@@ -23,6 +23,7 @@ export class ProfileEditorComponent {
 	showEmailError:boolean = false;
 	showEmailError2: boolean = false;
 	showLogIn:boolean = false;
+	showUsernameError2: boolean = false;
 
   constructor(private ProfileEditorService: ProfileEditorService, private router: Router){}
 	updateInfo(formdata){
@@ -47,6 +48,14 @@ export class ProfileEditorComponent {
 			this.showUsernameError = true;
 			if(formdata.Username != "")
 			this.showUsernameError = false;
+			this.ProfileEditorService.checkusername(formdata.Username)
+			.subscribe(username => {this.UsersName = username,this.repeatuser(username)});
+	}
+	repeatuser(username:User){
+		if(username != null)
+		this.showUsernameError2 = true;
+		else
+		this.showUsernameError2 = false;
 	}
 	checkblankpassword(formdata){
 			if(formdata.Password == "")
@@ -80,7 +89,6 @@ export class ProfileEditorComponent {
 	}
 	checkblankemail(formdata){
 		let atpos = formdata.Email.indexOf("@");
-        let dotpos = formdata.Email.lastIndexOf(".");
          
         if (atpos < 1) {
 			this.showEmailError2 = true;
